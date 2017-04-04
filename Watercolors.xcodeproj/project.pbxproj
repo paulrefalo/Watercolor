@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4805C76D1E942CBE00C885F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C76C1E942CBE00C885F4 /* AppDelegate.swift */; };
-		4805C76F1E942CBE00C885F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C76E1E942CBE00C885F4 /* ViewController.swift */; };
 		4805C7721E942CBE00C885F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4805C7701E942CBE00C885F4 /* Main.storyboard */; };
 		4805C7751E942CBE00C885F4 /* Watercolors.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4805C7731E942CBE00C885F4 /* Watercolors.xcdatamodeld */; };
 		4805C7771E942CBE00C885F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4805C7761E942CBE00C885F4 /* Assets.xcassets */; };
 		4805C77A1E942CBE00C885F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */; };
 		4805C7851E942CBF00C885F4 /* WatercolorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C7841E942CBF00C885F4 /* WatercolorsTests.swift */; };
 		4805C7901E942CBF00C885F4 /* WatercolorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */; };
+		48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		4805C7691E942CBE00C885F4 /* Watercolors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watercolors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4805C76C1E942CBE00C885F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4805C76E1E942CBE00C885F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4805C7711E942CBE00C885F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4805C7741E942CBE00C885F4 /* Watercolors.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Watercolors.xcdatamodel; sourceTree = "<group>"; };
 		4805C7761E942CBE00C885F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		4805C78B1E942CBF00C885F4 /* WatercolorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatercolorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatercolorsUITests.swift; sourceTree = "<group>"; };
 		4805C7911E942CBF00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectColorVC.swift; path = ViewControllers/SelectColorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				4805C76C1E942CBE00C885F4 /* AppDelegate.swift */,
-				4805C76E1E942CBE00C885F4 /* ViewController.swift */,
 				4805C7701E942CBE00C885F4 /* Main.storyboard */,
 				4805C7761E942CBE00C885F4 /* Assets.xcassets */,
 				4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */,
 				4805C77B1E942CBE00C885F4 /* Info.plist */,
 				4805C7731E942CBE00C885F4 /* Watercolors.xcdatamodeld */,
+				48CFE1AE1E9435DF008AEDBC /* Views */,
 			);
 			path = Watercolors;
 			sourceTree = "<group>";
@@ -126,6 +126,14 @@
 				4805C7911E942CBF00C885F4 /* Info.plist */,
 			);
 			path = WatercolorsUITests;
+			sourceTree = "<group>";
+		};
+		48CFE1AE1E9435DF008AEDBC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4805C76F1E942CBE00C885F4 /* ViewController.swift in Sources */,
 				4805C76D1E942CBE00C885F4 /* AppDelegate.swift in Sources */,
+				48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */,
 				4805C7751E942CBE00C885F4 /* Watercolors.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +519,7 @@
 				4805C7961E942CBF00C885F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4805C7971E942CBF00C885F4 /* Build configuration list for PBXNativeTarget "WatercolorsTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +528,7 @@
 				4805C7991E942CBF00C885F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4805C79A1E942CBF00C885F4 /* Build configuration list for PBXNativeTarget "WatercolorsUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +537,7 @@
 				4805C79C1E942CBF00C885F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
