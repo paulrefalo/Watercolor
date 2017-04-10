@@ -20,7 +20,7 @@ public class Paint: NSManagedObject {
     request.predicate = NSPredicate(format: "paint_name = %@", name)
     if let matches = try? context.fetch(request) {
         if matches.count > 0 {
-            print("found ", name)
+          //  print("found ", name)
             return matches.last as! Paint
         }
 
@@ -28,8 +28,9 @@ public class Paint: NSManagedObject {
 
     let thisPaint = Paint(entity:paintEntity, insertInto: context)
     thisPaint.paint_name = name
-        print ("add" , name)
+       // print ("add" , name)
     return thisPaint
 
 }
+
 }

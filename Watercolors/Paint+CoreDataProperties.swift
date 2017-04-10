@@ -30,6 +30,23 @@ extension Paint {
     @NSManaged public var sort_order: Int16
     @NSManaged public var staining_granulating: String?
     @NSManaged public var temperature: String?
-    @NSManaged public var contains: Pigment?
+    @NSManaged public var contains: NSSet?
+
+}
+
+// MARK: Generated accessors for contains
+extension Paint {
+
+    @objc(addContainsObject:)
+    @NSManaged public func addToContains(_ value: Pigment)
+
+    @objc(removeContainsObject:)
+    @NSManaged public func removeFromContains(_ value: Pigment)
+
+    @objc(addContains:)
+    @NSManaged public func addToContains(_ values: NSSet)
+
+    @objc(removeContains:)
+    @NSManaged public func removeFromContains(_ values: NSSet)
 
 }

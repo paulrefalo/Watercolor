@@ -21,14 +21,14 @@ public class Pigment: NSManagedObject {
         request.predicate = NSPredicate(format: "pigment_name = %@", name)
         if let matches = try? context.fetch(request) {
             if matches.count > 0 {
-                print("found ", name)
+             //   print("found ", name)
                 return matches.last as! Pigment
             }
 
         }
         let thisPigment = Pigment(entity:pigmentEntity, insertInto: context)
         thisPigment.pigment_name = name
-        print ("add" , name)
+      //  print ("add" , name)
         return thisPigment
         
     }

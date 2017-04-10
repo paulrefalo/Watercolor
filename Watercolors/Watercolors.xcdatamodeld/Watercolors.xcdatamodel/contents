@@ -15,7 +15,7 @@
         <attribute name="sort_order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="staining_granulating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="contains" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pigment" inverseName="used_in" inverseEntity="Pigment" syncable="YES"/>
+        <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pigment" inverseName="used_in" inverseEntity="Pigment" syncable="YES"/>
     </entity>
     <entity name="Pigment" representedClassName=".Pigment" syncable="YES">
         <attribute name="alternative_names" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,10 +30,10 @@
         <attribute name="pigment_words" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="properties" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toxicity" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="used_in" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paint" inverseName="contains" inverseEntity="Paint" syncable="YES"/>
+        <relationship name="used_in" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Paint" inverseName="contains" inverseEntity="Paint" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Paint" positionX="-45" positionY="0" width="128" height="270"/>
-        <element name="Pigment" positionX="-18" positionY="27" width="128" height="240"/>
+        <element name="Paint" positionX="-522" positionY="27" width="128" height="268"/>
+        <element name="Pigment" positionX="-18" positionY="27" width="128" height="238"/>
     </elements>
 </model>

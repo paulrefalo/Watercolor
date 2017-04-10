@@ -134,13 +134,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let pigmentArray: [String]? = pigments.components(separatedBy: ",")
             for pigmentStr in pigmentArray! {
 
-                // find or create
+                let aPigment = Pigment.pigment(withName: pigmentStr, in: coreDataStack.managedContext)
+                paint.addToContains(aPigment)
 
-                let onePigment = Pigment.pigment(withName: pigmentStr, in: coreDataStack.managedContext)
-
-             //   paint.addToContains(onePigment)
-
-                print("The pigment name is: \(pigmentStr)")
             }
         }
 
