@@ -13,81 +13,137 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    lazy var  coreDataStack = CoreDataStack(modelName: "Watercolors")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        importJSONSeedDataIfNeeded()
+
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        coreDataStack.saveContext()
     }
 
-    // MARK: - Core Data stack
+    func importJSONSeedDataIfNeeded() {
 
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "Watercolors")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
+        let fetchRequest = NSFetchRequest<Paint>(entityName: "Paint")
+        let count = try! coreDataStack.managedContext.count(for: fetchRequest)
 
-    // MARK: - Core Data Saving support
+        print("paint count:" , count)
 
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
+
+        let fetchRequest2 = NSFetchRequest<Paint>(entityName: "Pigment")
+        let count2 = try! coreDataStack.managedContext.count(for: fetchRequest2)
+
+        print("pigment count: ", count2)
+
+     //   guard count == 0 else { return }
+
+        do {
+            let results = try coreDataStack.managedContext.fetch(fetchRequest)
+            results.forEach({ coreDataStack.managedContext.delete($0) })
+
+            coreDataStack.saveContext()
+            importJSONSeedData()
+        } catch let error as NSError {
+            print("Error fetching: \(error), \(error.userInfo)")
         }
     }
 
-}
+    func importJSONSeedData() {
 
+        // load pigment
+        let pigmentJsonURL = Bundle.main.url(forResource: "pigment", withExtension: "json")!
+        let pigmentJsonData = NSData(contentsOf: pigmentJsonURL) as! Data
+        let pigmentJsonArray = try! JSONSerialization.jsonObject(with: pigmentJsonData, options: [.allowFragments]) as! [AnyObject]
+
+        for pigmentJsonDictionary in pigmentJsonArray {
+
+
+            let pigment_name  = pigmentJsonDictionary["pigment_name"] as? String ?? ""
+            let toxicity = pigmentJsonDictionary["toxicity"] as? String ?? ""
+            let properties = pigmentJsonDictionary["properties"] as? String ?? ""
+            let pigment_words = pigmentJsonDictionary["pigment_words"] as? String ?? ""
+            let pigment_type = pigmentJsonDictionary["pigment_type"] as? String ?? ""
+            let pigment_code = pigmentJsonDictionary["pigment_code"] as? String ?? ""
+            let permanence = pigmentJsonDictionary["permanence"] as? String ?? ""
+            let image_name = pigmentJsonDictionary["image_name"] as? String ?? ""
+            let history = pigmentJsonDictionary["history"] as? String ?? ""
+            let chemical_name = pigmentJsonDictionary["chemical_name"] as? String ?? ""
+            let chemical_formula = pigmentJsonDictionary["chemical_formula"] as? String ?? ""
+            let alternative_names = pigmentJsonDictionary["alternative_names"] as? String ?? ""
+
+            let pigment = Pigment.pigment(withName: pigment_name, in: coreDataStack.managedContext)
+
+            pigment.toxicity = toxicity
+            pigment.properties = properties
+            pigment.pigment_words = pigment_words
+            pigment.pigment_type = pigment_type
+            pigment.pigment_code = pigment_code
+            pigment.permanence = permanence
+            pigment.image_name = image_name
+            pigment.history = history
+            pigment.chemical_name = chemical_name
+            pigment.chemical_formula = chemical_formula
+            pigment.alternative_names = alternative_names
+
+        }
+
+        // load paint
+        let paintJsonURL = Bundle.main.url(forResource: "paint", withExtension: "json")!
+        let paintJsonData = NSData(contentsOf: paintJsonURL) as! Data
+        let paintJsonArray = try! JSONSerialization.jsonObject(with: paintJsonData, options: [.allowFragments]) as! [AnyObject]
+
+        for paintJsonDictionary in paintJsonArray {
+
+            let temperature = paintJsonDictionary["temperature"] as? String ?? ""
+            let staining_granulating = paintJsonDictionary["staining_granulating"] as? String ?? ""
+            let sort_order = paintJsonDictionary["sort_order"] as? Int16 ?? 0
+            let pigments = paintJsonDictionary["pigments"] as? String ?? ""
+            let pigment_composition = paintJsonDictionary["pigment_composition"] as? String ?? ""
+            let paint_number = paintJsonDictionary["paint_number"] as? Int16 ?? 0
+            let paint_name = paintJsonDictionary["paint_name"] as? String ?? ""
+            let paint_history = paintJsonDictionary["paint_history"] as? String ?? ""
+            let other_names = paintJsonDictionary["other_names"] as? String ?? ""
+            let opacity = paintJsonDictionary["opacity"] as? String ?? ""
+            let need = paintJsonDictionary["need"] as? Bool ?? false
+            let lightfast_rating = paintJsonDictionary["lightfast_rating"] as? String ?? ""
+            let have = paintJsonDictionary["have"] as? Bool ?? false
+            let color_family = paintJsonDictionary["color_family"] as? String ?? ""
+
+            let paint = Paint.paint(withName: paint_name, in: coreDataStack.managedContext)
+
+            paint.temperature = temperature
+            paint.staining_granulating = staining_granulating
+            paint.sort_order = sort_order
+            paint.pigment_composition = pigment_composition
+            paint.paint_number = paint_number
+            paint.paint_name = paint_name
+            paint.paint_history = paint_history
+            paint.other_names = other_names
+            paint.opacity = opacity
+            paint.need = need
+            paint.lightfast_rating = lightfast_rating
+            paint.have = have
+            paint.color_family = color_family
+            paint.pigments = pigments
+
+            // this is the relationship between paint and pigments
+            let pigmentArray: [String]? = pigments.components(separatedBy: ",")
+            for pigmentStr in pigmentArray! {
+
+                // find or create
+
+                let onePigment = Pigment.pigment(withName: pigmentStr, in: coreDataStack.managedContext)
+
+             //   paint.addToContains(onePigment)
+
+                print("The pigment name is: \(pigmentStr)")
+            }
+        }
+
+coreDataStack.saveContext()
+}
+}

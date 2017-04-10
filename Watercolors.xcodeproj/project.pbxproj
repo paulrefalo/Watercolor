@@ -15,6 +15,13 @@
 		4805C7851E942CBF00C885F4 /* WatercolorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C7841E942CBF00C885F4 /* WatercolorsTests.swift */; };
 		4805C7901E942CBF00C885F4 /* WatercolorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */; };
 		48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */; };
+		F00B698A1E9BFB790021F055 /* Paint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69861E9BFB790021F055 /* Paint+CoreDataClass.swift */; };
+		F00B698B1E9BFB790021F055 /* Paint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */; };
+		F00B698C1E9BFB790021F055 /* Pigment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */; };
+		F00B698D1E9BFB790021F055 /* Pigment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69891E9BFB790021F055 /* Pigment+CoreDataProperties.swift */; };
+		F04411A11E9BDA850046A999 /* paint.json in Resources */ = {isa = PBXBuildFile; fileRef = F044119F1E9BDA850046A999 /* paint.json */; };
+		F04411A21E9BDA850046A999 /* pigment.json in Resources */ = {isa = PBXBuildFile; fileRef = F04411A01E9BDA850046A999 /* pigment.json */; };
+		F04411C51E9BDE950046A999 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04411C41E9BDE950046A999 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatercolorsUITests.swift; sourceTree = "<group>"; };
 		4805C7911E942CBF00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectColorVC.swift; path = ViewControllers/SelectColorVC.swift; sourceTree = "<group>"; };
+		F00B69861E9BFB790021F055 /* Paint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Paint+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Paint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pigment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F00B69891E9BFB790021F055 /* Pigment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pigment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F044119F1E9BDA850046A999 /* paint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = paint.json; sourceTree = "<group>"; };
+		F04411A01E9BDA850046A999 /* pigment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pigment.json; sourceTree = "<group>"; };
+		F04411C41E9BDE950046A999 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +113,13 @@
 		4805C76B1E942CBE00C885F4 /* Watercolors */ = {
 			isa = PBXGroup;
 			children = (
+				F04411A31E9BDA8C0046A999 /* Data */,
 				4805C76C1E942CBE00C885F4 /* AppDelegate.swift */,
+				F04411C41E9BDE950046A999 /* CoreDataStack.swift */,
 				4805C7701E942CBE00C885F4 /* Main.storyboard */,
 				4805C7761E942CBE00C885F4 /* Assets.xcassets */,
 				4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */,
 				4805C77B1E942CBE00C885F4 /* Info.plist */,
-				4805C7731E942CBE00C885F4 /* Watercolors.xcdatamodeld */,
 				48CFE1AE1E9435DF008AEDBC /* Views */,
 			);
 			path = Watercolors;
@@ -134,6 +149,20 @@
 				48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		F04411A31E9BDA8C0046A999 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F00B69861E9BFB790021F055 /* Paint+CoreDataClass.swift */,
+				F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */,
+				F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */,
+				F00B69891E9BFB790021F055 /* Pigment+CoreDataProperties.swift */,
+				4805C7731E942CBE00C885F4 /* Watercolors.xcdatamodeld */,
+				F044119F1E9BDA850046A999 /* paint.json */,
+				F04411A01E9BDA850046A999 /* pigment.json */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +233,7 @@
 				TargetAttributes = {
 					4805C7681E942CBE00C885F4 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = ZP5B9HS488;
 						ProvisioningStyle = Automatic;
 					};
 					4805C77F1E942CBF00C885F4 = {
@@ -213,6 +243,7 @@
 					};
 					4805C78A1E942CBF00C885F4 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = ZP5B9HS488;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4805C7681E942CBE00C885F4;
 					};
@@ -245,6 +276,8 @@
 			files = (
 				4805C77A1E942CBE00C885F4 /* LaunchScreen.storyboard in Resources */,
 				4805C7771E942CBE00C885F4 /* Assets.xcassets in Resources */,
+				F04411A21E9BDA850046A999 /* pigment.json in Resources */,
+				F04411A11E9BDA850046A999 /* paint.json in Resources */,
 				4805C7721E942CBE00C885F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,9 +303,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00B698A1E9BFB790021F055 /* Paint+CoreDataClass.swift in Sources */,
 				4805C76D1E942CBE00C885F4 /* AppDelegate.swift in Sources */,
+				F00B698B1E9BFB790021F055 /* Paint+CoreDataProperties.swift in Sources */,
 				48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */,
+				F00B698D1E9BFB790021F055 /* Pigment+CoreDataProperties.swift in Sources */,
 				4805C7751E942CBE00C885F4 /* Watercolors.xcdatamodeld in Sources */,
+				F00B698C1E9BFB790021F055 /* Pigment+CoreDataClass.swift in Sources */,
+				F04411C51E9BDE950046A999 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -413,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -426,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZP5B9HS488;
 				INFOPLIST_FILE = Watercolors/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.refalo.Watercolors;
@@ -438,6 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZP5B9HS488;
 				INFOPLIST_FILE = Watercolors/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.refalo.Watercolors;
@@ -478,7 +518,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = ZP5B9HS488;
 				INFOPLIST_FILE = WatercolorsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.refalo.WatercolorsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -491,7 +533,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = ZP5B9HS488;
 				INFOPLIST_FILE = WatercolorsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.refalo.WatercolorsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

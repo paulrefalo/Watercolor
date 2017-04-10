@@ -12,6 +12,7 @@ class SelectColorVC: UIViewController {
 
     @IBOutlet weak var ColorFlowerImageView: UIImageView!
     
+    var coreDataStack: CoreDataStack!
     
     override func viewDidLoad() {
         super.viewDidLoad()
