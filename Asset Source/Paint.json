@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Alizarin Crimson 010",
+    "color_family": "red",
+    "want": "0",
+    "have": "0",
+    "pigment_composition": "1:2 Dihydroxyan- Acceptable - LF III Transparent Staining thraquinone on\rAlumina Base (PR 83)",
+    "lightfast_rating": "Acceptable - LF III",
+    "opacity_rating": "Transparent",
+    "staining_granualting": "Staining",
+    "pigments": [
+      {
+        "pigment_name": "PR83—Alizarin Crimson",
+        "pigment_type": "PR83—Alizarin Crimson",
+        "chemical_name": "1,2-dihydroxyantraquinone",
+        "chemical_formula": "C14H8O4",
+        "properties": "Alizarin Crimson, the traditional cool counterpart to Cadmium Red, is a clear ruby-red with a maroon masstone and a bluish undertone. It is the artist's principal deep red pigment, is transparent, and has good tinting strength. It creates bright rosy pinks when mixed with white, a range of purples and violets when mixed with strong blues, can be slow drying when used with oils, and is compatible with all other pigments. Permanent Alizarin Crimson mixes well with Ultramarine in acrylic and watercolor form. Permanent Rose and Quinacridone Rose are possible alternatives on a watercolor palette. Alizarin Crimson is a popular glazing color.",
+        "permanence": "Alizarin Crimson is considered fugitive or marginally lightfast, and the appropriateness of its use in the modern artist palette is a subject of debate. There are many concerns regarding its permanence, particularly when mixed with ochre, sienna, and umber, or when used thinly. It is the least permanent red commonly used by today’s artists. Modern synthetic preparations of Alizarin Crimson have better permanence and lightfastness that the original natural pigment, which was extracted from the madder plant. Quinacridone pigments have been used to create a modern hue that closely matches the original hue, but many artists object that the transparency and handling characteristics are not the same as for the original.",
+        "toxicity": "Alizarin Crimson can be slightly toxic if it comes into contact with skin and may cause some allergies. There is no significant acute toxicity.",
+        "history": "The word alizarin comes from the Arabic word al-usara, meaning juice. The base ingredient of this pigment is the Madder plant (Rubia Tinctorum). It was used for dyes and inks among craftsmen in Ancient Persia, India, and Egypt as early as 1500 BC In 1804, George Field, an English dye maker, developed Madder Lake by binding madder to alum, a white powder. The German chemists Carl Grabe and Carl Liebermann produced the first synthetic variety of this pigment, most commonly known as Alizarin Crimson, in 1868. They used anthracene, which greatly improved the lightfastness. The Colour Index International designation PR83:1 has been used to identify this synthetic laked pigment.",
+        "alternate_names": ""
+      }
+    ]
+  },
+  {
+    "name": "Sap Green Permanent 174",
+    "color_family": "green",
+    "want": "0",
+    "have": "0",
+    "pigment_composition": "Chlorinated Copper Phthalocyanine (PG 7) Isoindolinone Yellow (PY 110)",
+    "lightfast_rating": "Excellent - LF I",
+    "opacity_rating": "Transparent",
+    "staining_granualting": "Staining",
+    "pigments": [
+      {
+        "pigment_name": "PG7—Phthalo Green",
+        "pigment_type": "organic",
+        "chemical_name": "polychlorinated copper(II) phthalocyanine",
+        "chemical_formula": "C32H3Cl13CuN8 to C32HCl15CuN8 or C32H16CuN8Cl15 (PG7) or C32Br6Cl10CuN8 (PG36)",
+        "properties": "Phthalo Green is a transparent, cool, bright, high intensity color used in oil and acrylics. It comes from a Phthalocyanine Blue pigment where most of the hydrogen atoms have been replaced with chlorine, forming highly stable molecules. It has similar pigment properties and permanence to Phthalo Blue. It is slow drying and an excellent base color for mixing a range of bright greens. Phthalo Green is considered a very good alternative to Viridian because it is intense and mixes well and can be used to emphasize mineral colors in various\r120\nM Graham Watercolors\rtints. However, its tinting strength is very high, so it can overpower other colors. This pigment most closely resembles the discontinued and toxic Verdigris.",
+        "permanence": "Phthalo Greens are completely lightfast and resistant to alkali, acids, solvents, heat, and ultraviolet radiation. They are currently used in inks, coatings, and many plastics due to their stability and are considered a standard pigment in printing ink and the packaging industry.",
+        "toxicity": "Phthalo Green has no significant hazards, but it contained PCBs (polychlorinated biphenyls) until 1982.",
+        "history": "This bright blue-green was developed in 1935 and has been in use since 1938.",
+        "alternate_names": "Bocour Green, Cyan Green, Intense Green, Monastral Green, Phthalocyanine Green, Rembrandt Green, Thalo Green, Winsor Green."
+      },
+      {
+        "pigment_name": "Isoindolinone Excellent - LF I Transparent Staining Yellow (PY 110)",
+        "pigment_type": "organic synthetic",
+        "chemical_name": "isoindolinone yellow",
+        "chemical_formula": "n/a",
+        "properties": "Isoindolinone Yellow is a high performance pigment of excellent brightness and an average drying time.",
+        "permanence": "Isoindolinone Yellow has excellent lightfastness.",
+        "toxicity": "Isoindolinone Yellow is not considered toxic.",
+        "history": "The first isoindoline pigments were patented in 1946, and commercial production of pigments in this group began in the 1960s. Several isoindoline yellow pigments are available.\r￼\rPigment Lightfast Rating Opacity Rating Staining/Granulating Composition\r￼\r￼\rIsoindolinone Excellent - LF I Transparent Staining Yellow (PY 110)",
+        "alternate_names": "Tetrachloroisoindolinone"
+      }
+    ]
+  },
+  {
+    "name": "Indian Yellow 109",
+    "color_family": "yellow",
+    "want": "0",
+    "have": "0",
+    "pigment_composition": "Isoindolinone Excellent - LF I Transparent Staining Yellow (PY 110)",
+    "lightfast_rating": "Excellent - LF I",
+    "opacity_rating": "Transparent",
+    "staining_granualting": "Staining",
+    "pigments": [
+      {
+        "pigment_name": "Isoindolinone Excellent - LF I Transparent Staining Yellow (PY 110)",
+        "pigment_type": "organic synthetic",
+        "chemical_name": "isoindolinone yellow",
+        "chemical_formula": "n/a",
+        "properties": "Isoindolinone Yellow is a high performance pigment of excellent brightness and an average drying time.",
+        "permanence": "Isoindolinone Yellow has excellent lightfastness.",
+        "toxicity": "Isoindolinone Yellow is not considered toxic.",
+        "history": "The first isoindoline pigments were patented in 1946, and commercial production of pigments in this group began in the 1960s. Several isoindoline yellow pigments are available.\r￼\rPigment Lightfast Rating Opacity Rating Staining/Granulating Composition\r￼\r￼\rIsoindolinone Excellent - LF I Transparent Staining Yellow (PY 110)",
+        "alternate_names": "Tetrachloroisoindolinone"
+      }
+    ]
+  },
+  {
+    "name": "Ultramarine Blue 190",
+    "color_family": "blue",
+    "want": "0",
+    "have": "0",
+    "pigment_composition": "Silicate of Sodium Excellent - LF I Transparent Granulating & Aluminum with\rSulfur (PB 29)",
+    "lightfast_rating": "Excellent - LF I",
+    "opacity_rating": "Transparent",
+    "staining_granualting": "Granulating",
+    "pigments": [
+      {
+        "pigment_name": "PB29—Ultramarine [Blue]",
+        "pigment_type": "inorganic",
+        "chemical_name": "complex silicate of sodium and aluminum with sulfur",
+        "chemical_formula": "Na8-10Al6Si6O24S2-4 or Na6-8Al6Si6O24S2-4",
+        "properties": "Ultramarine is the standard warm blue, a brilliant blue pigment that has the most purple and least green in its undertone. It has a moderate to high tinting strength and a beautiful transparency. Synthetic Ultramarine is not as vivid a blue as natural Ultramarine. Ultramarine dries slowly in oil and tends to produce clean, though granular, washes in watercolor. French Ultramarine mixes well with Alizarin colors in oil and watercolor form to create a range of purples and violets. It can dull when mixed with white in acrylic form, but mixes well with other colors. The shade varies based on manufacturer. Considered a great color for glazes, it is not suitable for frescoing.",
+        "permanence": "Ultramarine has excellent permanence, although synthetic Ultramarine is not as permanent as natural Ultramarine. It may discolor if exposed to acid because of its sulfuric content.",
+        "toxicity": "Ultramarine has no significant hazards.",
+        "history": "The name for this pigment comes from the Middle Latin ultra, meaning beyond, and mare, meaning sea, because it was imported from Asia to Europe by sea. It is a prominent component of lapis lazuli and was used on Asian temples starting in the 6th century. It was one of the most expensive pigments in 16th century Europe, worth twice its weight in gold, and so was used sparingly and when commissions were larger. Ultramarine is currently imitated by a process invented in France in 1826 by Jean Baptiste Guimet, making blue affordable to artists and extending the range of colors on their palettes.",
+        "alternate_names": "Artificial Ultramarine, French Blue, French Ultramarine, Gmelin's Blue, Guimet’s Blue, Permanent Blue, Royal Blue, Synthetic Ultramarine. New Blue describes particular shades of Ultramarine. Armenian Blue and Lazuline Blue are names for genuine Lapiz Ultramarine. Sky Blue is a pale tone of Ultramarine."
+      }
+    ]
+  }
+]
