@@ -1,5 +1,5 @@
 //
-//  SearchPigmentTableViewCell.swift
+//  InventoryTableViewCell.swift
 //  Watercolors
 //
 //  Created by Paul Refalo on 4/10/17.
@@ -8,12 +8,15 @@
 
 import UIKit
 
-class SearchPigmentTableViewCell: UITableViewCell {
+class InventoryTableViewCell: UITableViewCell {
 
     @IBOutlet var swatchImageView: UIImageView!
+    @IBOutlet var haveImageView: UIImageView!
+    @IBOutlet var needImageView: UIImageView!
     @IBOutlet var nameLabelOutlet: UILabel!
-    @IBOutlet var pigmentOutlet: UILabel!
-    @IBOutlet var chemicalNameOutlet: UILabel!
+
+
+
 
     override func awakeFromNib() {
         super.awakeFromNib()

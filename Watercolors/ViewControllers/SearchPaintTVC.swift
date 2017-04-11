@@ -36,7 +36,7 @@ class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate 
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
-
+      // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

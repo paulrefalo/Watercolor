@@ -14,7 +14,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
 var managedContext: NSManagedObjectContext!
 var fetchedResultsController : NSFetchedResultsController<Pigment>!
 var searchString:String = ""
-
+ // MARK: - IBOutlets
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<Pigment>(entityName: "Pigment")
         let pigmentSort = NSSortDescriptor(key: "pigment_name", ascending: true)
@@ -28,7 +28,7 @@ var searchString:String = ""
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
-
+      // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -83,14 +83,31 @@ var searchString:String = ""
     }
 
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+
+        print("prepareForSeque to DetailView")
+
+
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+
+            let dvc: PigmentInfoTVC? = (segue.destination as? PigmentInfoTVC)
+
+            guard let object = self.fetchedResultsController?.object(at: indexPath) else {
+                fatalError("No managed object")
+            }
+
+            let this_pigment = object as Pigment
+            dvc?.currentPigment = this_pigment
+        }
+
+
     }
-    */
+
 
 }

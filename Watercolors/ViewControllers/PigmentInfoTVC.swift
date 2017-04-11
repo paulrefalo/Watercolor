@@ -9,78 +9,60 @@
 import UIKit
 import CoreData
 class PigmentInfoTVC: UITableViewController {
-var managedContext: NSManagedObjectContext!
+    // MARK: - Properties
+    var currentPigment: Pigment!
+ // MARK: - IBOutlets
+    @IBOutlet var PigmentImageView: UIImageView!
+    @IBOutlet var PigmentImageView1: UIImageView!
+    @IBOutlet var PigmentImageView2: UIImageView!
+    @IBOutlet var PigmentImageView3: UIImageView!
+    @IBOutlet var PigmentImageView4: UIImageView!
+    @IBOutlet var PigmentImageView5: UIImageView!
+    @IBOutlet var PigmentImageView6: UIImageView!
+    @IBOutlet var PigmentImageView7: UIImageView!
+
+    @IBOutlet var PigmentNameLabel: UILabel!
+    @IBOutlet var PigmentTypeLabel: UILabel!
+    @IBOutlet var ChemicalNameLabel: UILabel!
+    @IBOutlet var ChemicalStructureLabel: UILabel!
+
+    @IBOutlet var PropertiesLabel: UILabel!
+
+    @IBOutlet var PermanenceLabel: UILabel!
+    @IBOutlet var ToxicityLabel: UILabel!
+    @IBOutlet var HistoryLabel: UILabel!
+
+    @IBOutlet var AltNamesLabel: UILabel!
+      // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        PigmentNameLabel.text = currentPigment.pigment_name;
+        ChemicalNameLabel.text = currentPigment.chemical_name;
+        ChemicalStructureLabel.text = currentPigment.chemical_formula;
+        PropertiesLabel.text = currentPigment.properties;
+        PermanenceLabel.text = currentPigment.permanence;
+        ToxicityLabel.text = currentPigment.toxicity;
+        HistoryLabel.text = currentPigment.history;
+        AltNamesLabel.text = currentPigment.alternative_names;
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+        guard let pigmentImageName = currentPigment.image_name  else { return}
+
+        PigmentImageView.image = UIImage(named: pigmentImageName)
+        PigmentImageView2.image = UIImage(named: pigmentImageName)
+        PigmentImageView2.image = UIImage(named: pigmentImageName)
+        PigmentImageView3.image = UIImage(named: pigmentImageName)
+        PigmentImageView4.image = UIImage(named: pigmentImageName)
+        PigmentImageView5.image = UIImage(named: pigmentImageName)
+        PigmentImageView6.image = UIImage(named: pigmentImageName)
+        PigmentImageView7.image = UIImage(named: pigmentImageName)
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

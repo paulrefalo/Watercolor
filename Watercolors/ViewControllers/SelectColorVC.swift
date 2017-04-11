@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 class SelectColorVC: UIViewController {
 var managedContext: NSManagedObjectContext!
+        // MARK: - Properties
+     // MARK: - IBOutlets
     @IBOutlet weak var ColorFlowerImageView: UIImageView!
-
+      // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

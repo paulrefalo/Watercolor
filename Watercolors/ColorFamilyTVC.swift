@@ -9,7 +9,12 @@
 import UIKit
 import CoreData
 class ColorFamilyTVC: UITableViewController {
+        // MARK: - Properties
 var managedContext: NSManagedObjectContext!
+     // MARK: - IBOutlets
+
+
+          // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
