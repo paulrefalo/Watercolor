@@ -1,5 +1,5 @@
 //
-//  SearchPaintTVC.swift
+//  ColorFamilyTVC.swift
 //  Watercolors
 //
 //  Created by Paul Refalo on 4/10/17.
@@ -8,27 +8,33 @@
 
 import UIKit
 import CoreData
+class ColorFamilyTVC: UITableViewController, NSFetchedResultsControllerDelegate {
 
-class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
     var managedContext: NSManagedObjectContext!
+    var colorFamily: String!
     var fetchedResultsController : NSFetchedResultsController<Paint>!
-
-    var searchString:String = ""
-
+     // MARK: - IBOutlets
 
 
+          // MARK: - View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
- // MARK: - IBOutlets
-    @IBOutlet var searchBar: UISearchBar!
+        title=colorFamily
+        self.initializeFetchedResultsController()
 
-      // MARK: - View Life Cycle
+    }
+
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<Paint>(entityName: "Paint")
-        let pigmentSort = NSSortDescriptor(key: "paint_name", ascending: true)
-        request.sortDescriptors = [pigmentSort]
+        let paintSort = NSSortDescriptor(key: "paint_name", ascending: true)
+        request.sortDescriptors = [paintSort]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
+
+        // only select color family
+        request.predicate = NSPredicate(format: "color_family CONTAINS %@", colorFamily)
 
         do {
             try fetchedResultsController.performFetch()
@@ -36,29 +42,17 @@ class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate 
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
-      // MARK: - View Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.initializeFetchedResultsController()
-    }
-
-
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - Table view data source
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchForPaintCell", for: indexPath) as! SearchPaintTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorFamilyCell", for: indexPath) as! ColorFamilyTableViewCell
 
         // Set up the cell
         guard let object = self.fetchedResultsController?.object(at: indexPath) else {
@@ -71,11 +65,26 @@ class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate 
         cell.nameLabelOutlet.text = this_paint.paint_name
         cell.lightFastOutlet.text = this_paint.lightfast_rating
 
+        if this_paint.have == true {
+            cell.haveImageView.image = UIImage(named: "Have")
+
+        } else {
+            cell.haveImageView.image = UIImage(named: "Have-Not")
+        }
+
+        if this_paint.need == true {
+            cell.needImageView.image = UIImage(named: "Need")
+
+        } else {
+            cell.needImageView.image = UIImage(named: "Need-Not")
+        }
+
+
 
         if let opacity = this_paint.opacity, let staining = this_paint.staining_granulating {
-         let comboStr =  "\(opacity) - \(staining)"
-        cell.transparentOutlet.text = comboStr
- }
+            let comboStr =  "\(opacity) - \(staining)"
+            cell.transparentOutlet.text = comboStr
+        }
 
 
         //Populate the cell from the object
@@ -99,11 +108,10 @@ class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate 
     }
 
 
+    // MARK: - Navigation
 
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         print("prepareForSeque to PaintView")
 
@@ -119,6 +127,6 @@ class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate 
             let selectedPaint = object as Paint
             dvc?.currentPaint = selectedPaint
         }
-
+        
     }
 }
