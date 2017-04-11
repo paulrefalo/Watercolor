@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("paint count:" , count)
 
 
-        let fetchRequest2 = NSFetchRequest<Paint>(entityName: "Pigment")
+        let fetchRequest2 = NSFetchRequest<Pigment>(entityName: "Pigment")
         let count2 = try! coreDataStack.managedContext.count(for: fetchRequest2)
 
         print("pigment count: ", count2)

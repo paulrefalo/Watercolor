@@ -9,15 +9,13 @@
 import UIKit
 import CoreData
 
-class SearchPaintTVC: UITableViewController {
-
+class SearchPaintTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
-    fileprivate let cellIdentifier = "SearchForPaintCell"
-var managedContext: NSManagedObjectContext!
+    var managedContext: NSManagedObjectContext!
     var fetchedResultsController : NSFetchedResultsController<Paint>!
-    var selectedPaint:Paint?
+
     var searchString:String = ""
-    var loadedPaint:[Paint]?
+
 
 
 
@@ -25,117 +23,90 @@ var managedContext: NSManagedObjectContext!
     @IBOutlet var searchBar: UISearchBar!
 
       // MARK: - View Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        tableView.register(SearchPaintTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.delegate = self
-
-        let fetchRequest: NSFetchRequest<Paint> = Paint.fetchRequest()
-        let nameSort = NSSortDescriptor(key: #keyPath(Paint.paint_name), ascending: true)
-
-        fetchRequest.sortDescriptors = [nameSort]
-
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                              managedObjectContext: managedContext,
-                                                              sectionNameKeyPath: nil,
-                                                              cacheName: nil)
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest<Paint>(entityName: "Paint")
+        let pigmentSort = NSSortDescriptor(key: "paint_name", ascending: true)
+        request.sortDescriptors = [pigmentSort]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
 
         do {
             try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
-
-
-      print("afterfetch")
-
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.initializeFetchedResultsController()
+    }
+
+
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1
-    }
-
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchForPaintCell", for: indexPath) as! SearchPaintTableViewCell
 
-        // Configure the cell...
+        // Set up the cell
+        guard let object = self.fetchedResultsController?.object(at: indexPath) else {
+            fatalError("Attempt to configure cell without a managed object")
+        }
 
+        let this_paint = object as Paint
+        let image_name = String(stringInterpolationSegment: this_paint.paint_number)
+        cell.swatchImageView.image = UIImage(named: image_name )
+        cell.nameLabelOutlet.text = this_paint.paint_name
+        cell.lightFastOutlet.text = this_paint.lightfast_rating
+
+
+        if let opacity = this_paint.opacity, let staining = this_paint.staining_granulating {
+         let comboStr =  "\(opacity) - \(staining)"
+        cell.transparentOutlet.text = comboStr
+ }
+
+
+        //Populate the cell from the object
         return cell
     }
 
-
-
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-}
-    // MARK: - UITableViewDelegate
-    extension ViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    //   let selectedPaint = fetchedResultsController.object(at: indexPath)
-        
-    }
-}
-
-        // MARK: - NSFetchedResultsControllerDelegate
-        extension ViewController: NSFetchedResultsControllerDelegate {
-
-            func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-               // tableView
-            }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections in fetchedResultsController")
         }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
+    }
 
 
+    /*
+     // MARK: - Navigation
 
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}

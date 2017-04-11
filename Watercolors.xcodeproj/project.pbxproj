@@ -28,6 +28,7 @@
 		F00B69A51E9C425E0021F055 /* DetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69A41E9C425E0021F055 /* DetailTVC.swift */; };
 		F00B69A81E9C433F0021F055 /* SearchPaintTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69A71E9C433F0021F055 /* SearchPaintTableViewCell.swift */; };
 		F00B69AA1E9C458E0021F055 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69A91E9C458E0021F055 /* ViewController.swift */; };
+		F00B69B01E9C79250021F055 /* SearchPigmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69AF1E9C79250021F055 /* SearchPigmentTableViewCell.swift */; };
 		F04411A11E9BDA850046A999 /* paint.json in Resources */ = {isa = PBXBuildFile; fileRef = F044119F1E9BDA850046A999 /* paint.json */; };
 		F04411A21E9BDA850046A999 /* pigment.json in Resources */ = {isa = PBXBuildFile; fileRef = F04411A01E9BDA850046A999 /* pigment.json */; };
 		F04411C51E9BDE950046A999 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04411C41E9BDE950046A999 /* CoreDataStack.swift */; };
@@ -78,6 +79,7 @@
 		F00B69A41E9C425E0021F055 /* DetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTVC.swift; path = ViewControllers/DetailTVC.swift; sourceTree = "<group>"; };
 		F00B69A71E9C433F0021F055 /* SearchPaintTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPaintTableViewCell.swift; path = Cells/SearchPaintTableViewCell.swift; sourceTree = "<group>"; };
 		F00B69A91E9C458E0021F055 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewControllers/ViewController.swift; sourceTree = "<group>"; };
+		F00B69AF1E9C79250021F055 /* SearchPigmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPigmentTableViewCell.swift; path = Cells/SearchPigmentTableViewCell.swift; sourceTree = "<group>"; };
 		F044119F1E9BDA850046A999 /* paint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = paint.json; sourceTree = "<group>"; };
 		F04411A01E9BDA850046A999 /* pigment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pigment.json; sourceTree = "<group>"; };
 		F04411C41E9BDE950046A999 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				F00B69A71E9C433F0021F055 /* SearchPaintTableViewCell.swift */,
+				F00B69AF1E9C79250021F055 /* SearchPigmentTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F00B698B1E9BFB790021F055 /* Paint+CoreDataProperties.swift in Sources */,
 				F00B69A31E9C42210021F055 /* PigmentInfoTVC.swift in Sources */,
 				48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */,
+				F00B69B01E9C79250021F055 /* SearchPigmentTableViewCell.swift in Sources */,
 				F00B69A51E9C425E0021F055 /* DetailTVC.swift in Sources */,
 				F00B699D1E9C41930021F055 /* SearchPigmentTCV.swift in Sources */,
 				F00B69991E9C41690021F055 /* InventoryTVC.swift in Sources */,
