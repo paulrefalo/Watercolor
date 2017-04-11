@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ColorFlower" translatesAutoresizingMaskIntoConstraints="NO" id="O7W-j6-qpT">
-                                <rect key="frame" x="20" y="44" width="280" height="369"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorFlower" translatesAutoresizingMaskIntoConstraints="NO" id="O7W-j6-qpT">
+                                <rect key="frame" x="16" y="0.0" width="343" height="603"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFc-mM-InM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="336" y="-66"/>
+            <point key="canvasLocation" x="30" y="-130"/>
         </scene>
         <!--Reds-->
         <scene sceneID="st6-IX-Jul">
@@ -110,12 +110,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZo-2H-ydf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="-65"/>
+            <point key="canvasLocation" x="1064" y="13"/>
         </scene>
         <!--Paint Information-->
         <scene sceneID="LBh-0L-djj">
             <objects>
-                <tableViewController id="z1q-fL-I86" customClass="WCPaintDetailTableViewController" sceneMemberID="viewController">
+                <tableViewController id="z1q-fL-I86" customClass="PaintInfoTVC" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ejj-2f-mnE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +310,7 @@
         <!--My Inventory-->
         <scene sceneID="2oo-Dm-G6f">
             <objects>
-                <tableViewController id="BVs-oo-JfE" customClass="WCInventoryViewController" sceneMemberID="viewController">
+                <tableViewController id="BVs-oo-JfE" customClass="InventoryTVC" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" id="9jM-49-5NN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,12 +393,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdS-rw-ZKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907" y="1132"/>
+            <point key="canvasLocation" x="376" y="712"/>
         </scene>
         <!--M Graham Watercolor Paint-->
         <scene sceneID="fmE-so-8rp">
             <objects>
-                <viewController id="oha-Ff-kSa" sceneMemberID="viewController">
+                <viewController id="oha-Ff-kSa" customClass="ViewController" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YWe-nJ-iof"/>
                         <viewControllerLayoutGuide type="bottom" id="Sxo-0f-ceu"/>
@@ -407,66 +407,74 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="watercolor background" translatesAutoresizingMaskIntoConstraints="NO" id="9az-MA-dsw">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watercolor background" translatesAutoresizingMaskIntoConstraints="NO" id="9az-MA-dsw">
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watercolor_mgraham" translatesAutoresizingMaskIntoConstraints="NO" id="Yid-Mz-0tA">
-                                <rect key="frame" x="0.0" y="-111" width="375" height="395"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watercolor_mgraham" translatesAutoresizingMaskIntoConstraints="NO" id="4fs-9j-98T">
+                                <rect key="frame" x="0.0" y="43" width="376" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GUS-Fv-8qc"/>
+                                </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="ThX-uo-CgL">
-                                <rect key="frame" x="20" y="234" width="335" height="349"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-lr-Gss">
+                                <rect key="frame" x="26" y="186" width="323" height="407"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yuG-xy-1oE">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="165.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiZ-Yq-myw">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="165.5"/>
-                                                <state key="normal" title="Color Family" image="Button_Color"/>
-                                                <connections>
-                                                    <segue destination="dW1-ve-PGx" kind="push" id="nKM-rO-xjN"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekK-Ul-WaL">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="165.5"/>
-                                                <state key="normal" title="Inventory" image="Button_Inventory"/>
-                                                <connections>
-                                                    <segue destination="BVs-oo-JfE" kind="push" id="h1N-fJ-0uv"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wSP-Io-CfQ">
-                                        <rect key="frame" x="0.0" y="183.5" width="335" height="165.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygw-TF-i4c">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="165.5"/>
-                                                <state key="normal" title="Paint Search" image="Button_Paint"/>
-                                                <connections>
-                                                    <segue destination="qCc-E4-Wxy" kind="push" id="E0G-mu-utS"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KE8-3z-tml">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="165.5"/>
-                                                <state key="normal" title="Pigment Search" image="Button_Pigment"/>
-                                                <connections>
-                                                    <segue destination="JOz-Jr-hGG" kind="push" id="Gfk-tA-ie5"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU4-Ho-VqI">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="102"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="40"/>
+                                        <state key="normal" title="Color Picker">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="dW1-ve-PGx" kind="push" identifier="SelectColorSegue" id="AeX-iQ-qeZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yg-em-F3m">
+                                        <rect key="frame" x="0.0" y="102" width="323" height="101.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="40"/>
+                                        <state key="normal" title="Pigments">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="JOz-Jr-hGG" kind="push" identifier="PigmentSearchSegue" id="CIj-kP-QhW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvC-9Z-Kdh">
+                                        <rect key="frame" x="0.0" y="203.5" width="323" height="102"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="40"/>
+                                        <state key="normal" title="Paints">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qCc-E4-Wxy" kind="push" identifier="PaintSearchSegue" id="Ie9-yR-w1x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idA-VZ-2X8">
+                                        <rect key="frame" x="0.0" y="305.5" width="323" height="101.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="40"/>
+                                        <state key="normal" title="Inventory">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="BVs-oo-JfE" kind="push" identifier="InventorySegue" id="Qeb-ab-sGa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Yid-Mz-0tA" firstAttribute="top" secondItem="YWe-nJ-iof" secondAttribute="bottom" constant="-111" id="2Cu-CV-wrS"/>
-                            <constraint firstItem="Yid-Mz-0tA" firstAttribute="leading" secondItem="YNI-3s-Tcb" secondAttribute="leading" id="7Ym-IC-ejq"/>
-                            <constraint firstAttribute="bottom" secondItem="ThX-uo-CgL" secondAttribute="bottom" constant="20" id="7mP-0m-Wc7"/>
-                            <constraint firstAttribute="trailing" secondItem="ThX-uo-CgL" secondAttribute="trailing" constant="20" id="PcG-h6-IX0"/>
-                            <constraint firstItem="ThX-uo-CgL" firstAttribute="leading" secondItem="YNI-3s-Tcb" secondAttribute="leading" constant="20" id="XeL-Py-Fxz"/>
-                            <constraint firstAttribute="trailing" secondItem="Yid-Mz-0tA" secondAttribute="trailing" id="epe-ol-f5h"/>
-                            <constraint firstItem="ThX-uo-CgL" firstAttribute="top" secondItem="Yid-Mz-0tA" secondAttribute="bottom" constant="-50" id="hjp-sX-ngd"/>
+                            <constraint firstItem="Sxo-0f-ceu" firstAttribute="top" secondItem="9az-MA-dsw" secondAttribute="bottom" id="3be-5X-RMI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2pZ-lr-Gss" secondAttribute="trailing" constant="10" id="F7c-Pk-AXt"/>
+                            <constraint firstAttribute="trailing" secondItem="9az-MA-dsw" secondAttribute="trailing" constant="-425" id="GCZ-sN-ZKf"/>
+                            <constraint firstItem="4fs-9j-98T" firstAttribute="top" secondItem="YWe-nJ-iof" secondAttribute="bottom" constant="43" id="IIK-CY-c6G"/>
+                            <constraint firstItem="9az-MA-dsw" firstAttribute="leading" secondItem="YNI-3s-Tcb" secondAttribute="leading" id="RBe-7M-aRE"/>
+                            <constraint firstItem="2pZ-lr-Gss" firstAttribute="leading" secondItem="YNI-3s-Tcb" secondAttribute="leadingMargin" constant="10" id="Ro2-Qc-1R7"/>
+                            <constraint firstItem="4fs-9j-98T" firstAttribute="leading" secondItem="YNI-3s-Tcb" secondAttribute="leading" id="fU6-pw-IQ6"/>
+                            <constraint firstItem="Sxo-0f-ceu" firstAttribute="top" secondItem="2pZ-lr-Gss" secondAttribute="bottom" constant="10" id="i7N-fe-hSb"/>
+                            <constraint firstItem="2pZ-lr-Gss" firstAttribute="top" secondItem="4fs-9j-98T" secondAttribute="bottom" constant="43" id="jc6-qL-AEk"/>
+                            <constraint firstAttribute="trailing" secondItem="4fs-9j-98T" secondAttribute="trailing" constant="-1" id="jhp-c9-8mi"/>
+                            <constraint firstItem="9az-MA-dsw" firstAttribute="top" secondItem="YWe-nJ-iof" secondAttribute="bottom" id="rwe-3U-eyB"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -474,12 +482,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxp-Mw-qcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-280.5" y="-92.5"/>
+            <point key="canvasLocation" x="-732" y="-94"/>
         </scene>
         <!--Pigments-->
         <scene sceneID="7Ed-De-hoO">
             <objects>
-                <tableViewController id="JOz-Jr-hGG" customClass="WCPigmentSearchViewController" sceneMemberID="viewController">
+                <tableViewController id="JOz-Jr-hGG" customClass="SearchPigmentTCV" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lkA-it-yaI">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -554,12 +562,12 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="961" y="-1312"/>
+            <point key="canvasLocation" x="-192" y="-984"/>
         </scene>
         <!--Pigment-->
         <scene sceneID="DGF-1P-wHI">
             <objects>
-                <tableViewController id="yZH-iH-0Nd" customClass="WCPigmentDetailTableViewController" sceneMemberID="viewController">
+                <tableViewController id="yZH-iH-0Nd" customClass="PigmentInfoTVC" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q6N-jh-ucs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -812,7 +820,7 @@
         <!--Detail-->
         <scene sceneID="fb0-9h-LAN">
             <objects>
-                <viewController id="j3J-Y3-JxG" customClass="WCPigmentDetailViewController" sceneMemberID="viewController">
+                <viewController id="j3J-Y3-JxG" customClass="DetailTVC" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hJC-g4-vfw"/>
                         <viewControllerLayoutGuide type="bottom" id="b4g-7R-3hR"/>
@@ -857,21 +865,18 @@
         <!--Paint Search-->
         <scene sceneID="ebX-85-Mfw">
             <objects>
-                <tableViewController id="qCc-E4-Wxy" customClass="WCPaintSearchViewController" sceneMemberID="viewController">
+                <tableViewController id="qCc-E4-Wxy" customClass="SearchPaintTVC" customModule="Watercolors" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aHf-V3-EtL">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="1rs-YX-rRW">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="3iP-Eq-6jP">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="qCc-E4-Wxy" id="9xb-OM-kLu"/>
-                            </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchForPaintCell" rowHeight="75" id="HZm-A1-5Jt">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchForPaintCell" rowHeight="75" id="HZm-A1-5Jt" customClass="SearchPaintTableViewCell" customModule="Watercolors" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="66" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HZm-A1-5Jt" id="OsS-Na-gxD">
@@ -905,34 +910,28 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="lightFastOutlet" destination="9Qv-XC-Ah8" id="exV-LU-88K"/>
+                                    <outlet property="nameLabelOutlet" destination="cOJ-jl-Vpi" id="pAR-eA-ESU"/>
+                                    <outlet property="swatchImageView" destination="J2N-bD-yo4" id="Ih6-K3-XaP"/>
+                                    <outlet property="transparentOutlet" destination="ol2-1P-HLf" id="5K5-Bj-v8C"/>
                                     <segue destination="z1q-fL-I86" kind="push" identifier="SearchPaintSegue" id="bvt-jV-8mk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qCc-E4-Wxy" id="Ub7-eX-Jqy"/>
-                            <outlet property="delegate" destination="qCc-E4-Wxy" id="f6Q-Wm-hz2"/>
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Paint Search" id="D1n-TZ-nRn"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="C57-TG-paF" id="KM1-lH-fiY"/>
-                        <outlet property="theSearchBar" destination="1rs-YX-rRW" id="orA-6o-Kc3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9PZ-nr-my5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="C57-TG-paF">
-                    <connections>
-                        <outlet property="delegate" destination="qCc-E4-Wxy" id="UTQ-Gw-YRQ"/>
-                        <outlet property="searchBar" destination="1rs-YX-rRW" id="wQo-EV-33V"/>
-                        <outlet property="searchContentsController" destination="qCc-E4-Wxy" id="mZd-5W-HKw"/>
-                        <outlet property="searchResultsDataSource" destination="qCc-E4-Wxy" id="mj8-Ax-lEb"/>
-                        <outlet property="searchResultsDelegate" destination="qCc-E4-Wxy" id="zJj-wf-1wX"/>
-                    </connections>
-                </searchDisplayController>
+                <searchDisplayController id="C57-TG-paF"/>
             </objects>
-            <point key="canvasLocation" x="867" y="1951"/>
+            <point key="canvasLocation" x="-706" y="829"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7q6-AN-iY5">
@@ -950,16 +949,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhA-RN-EKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-803" y="-91"/>
+            <point key="canvasLocation" x="-1204" y="-93"/>
         </scene>
     </scenes>
     <resources>
         <image name="10" width="600" height="300"/>
         <image name="174" width="600" height="300"/>
-        <image name="Button_Color" width="200" height="200"/>
-        <image name="Button_Inventory" width="250" height="250"/>
-        <image name="Button_Paint" width="250" height="250"/>
-        <image name="Button_Pigment" width="250" height="250"/>
         <image name="ColorFlower" width="280" height="369"/>
         <image name="Have" width="18" height="18"/>
         <image name="Have-Not" width="36" height="36"/>
@@ -967,7 +962,7 @@
         <image name="PB15-0-PhthaloBlue" width="100" height="100"/>
         <image name="PB15-3-PhthaloBlue" width="100" height="100"/>
         <image name="PV14-CobaltViolet" width="100" height="100"/>
-        <image name="watercolor background" width="573" height="383"/>
+        <image name="watercolor background" width="1500" height="1000"/>
         <image name="watercolor_mgraham" width="800" height="395"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -976,8 +971,8 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="o4j-Kc-GBw"/>
-        <segue reference="Fhx-63-msI"/>
+        <segue reference="bvt-jV-8mk"/>
+        <segue reference="u4t-XT-JbO"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2209449124072663" green="0.3942933058375635" blue="0.089073192866467144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

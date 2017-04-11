@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+
+        guard let navController = window?.rootViewController as? UINavigationController,
+            let viewController = navController.topViewController as? ViewController else {
+                return true
+        }
+
+        viewController.managedContext = coreDataStack.managedContext
+
         importJSONSeedDataIfNeeded()
 
         return true
@@ -39,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         print("pigment count: ", count2)
 
-     //   guard count == 0 else { return }
+        // load if there isn't data
+        guard count == 0 else { return }
 
         do {
             let results = try coreDataStack.managedContext.fetch(fetchRequest)

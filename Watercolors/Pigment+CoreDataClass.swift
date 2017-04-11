@@ -2,7 +2,7 @@
 //  Pigment+CoreDataClass.swift
 //  Watercolors
 //
-//  Created by Leisa Refalo on 4/10/17.
+//  Created by Paul Refalo on 4/10/17.
 //  Copyright © 2017 ReFalo. All rights reserved.
 //
 
