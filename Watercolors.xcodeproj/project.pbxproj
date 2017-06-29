@@ -14,7 +14,13 @@
 		4805C77A1E942CBE00C885F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */; };
 		4805C7851E942CBF00C885F4 /* WatercolorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C7841E942CBF00C885F4 /* WatercolorsTests.swift */; };
 		4805C7901E942CBF00C885F4 /* WatercolorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */; };
+		482E22101EFC1EDB00D7CEEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */; };
+		482E22121EFF3F9700D7CEEA /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482E22111EFF3F9700D7CEEA /* Emitter.swift */; };
+		489D060B1EE3239400ED20B0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D060A1EE3239400ED20B0 /* LoginVC.swift */; };
 		48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */; };
+		6837FA44C328193AB8DB05EB /* Pods_WatercolorsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C4A2446281BD3B56D8A1A6 /* Pods_WatercolorsTests.framework */; };
+		8E88C1357731D6FC963F767A /* Pods_Watercolors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6820E0CB5B2FA27595C3F38 /* Pods_Watercolors.framework */; };
+		A51BB02A44BFD63A83C0408B /* Pods_WatercolorsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9E6349AB58C386A927F32B /* Pods_WatercolorsUITests.framework */; };
 		F00B698A1E9BFB790021F055 /* Paint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69861E9BFB790021F055 /* Paint+CoreDataClass.swift */; };
 		F00B698B1E9BFB790021F055 /* Paint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */; };
 		F00B698C1E9BFB790021F055 /* Pigment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */; };
@@ -56,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16377F175BAD21241E946629 /* Pods-Watercolors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watercolors.release.xcconfig"; path = "Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors.release.xcconfig"; sourceTree = "<group>"; };
+		25905FAEDAB144FF7A81B431 /* Pods-WatercolorsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsTests/Pods-WatercolorsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4805C7691E942CBE00C885F4 /* Watercolors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watercolors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4805C76C1E942CBE00C885F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4805C7711E942CBE00C885F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,7 +77,17 @@
 		4805C78B1E942CBF00C885F4 /* WatercolorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatercolorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatercolorsUITests.swift; sourceTree = "<group>"; };
 		4805C7911E942CBF00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		482E22111EFF3F9700D7CEEA /* Emitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		489D060A1EE3239400ED20B0 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectColorVC.swift; path = ViewControllers/SelectColorVC.swift; sourceTree = "<group>"; };
+		6B951EB84E28E25CA86D4348 /* Pods-Watercolors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watercolors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors.debug.xcconfig"; sourceTree = "<group>"; };
+		70D10C59D56D44B8FDCFFE70 /* Pods-WatercolorsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsUITests/Pods-WatercolorsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		88BE69C0CEA67BE3BD2DE705 /* Pods-WatercolorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsTests/Pods-WatercolorsTests.release.xcconfig"; sourceTree = "<group>"; };
+		89BF1823962519711FAB8018 /* Pods-WatercolorsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsUITests/Pods-WatercolorsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B6820E0CB5B2FA27595C3F38 /* Pods_Watercolors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watercolors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC9E6349AB58C386A927F32B /* Pods_WatercolorsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatercolorsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9C4A2446281BD3B56D8A1A6 /* Pods_WatercolorsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatercolorsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00B69861E9BFB790021F055 /* Paint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Paint+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Paint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pigment+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -98,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E88C1357731D6FC963F767A /* Pods_Watercolors.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6837FA44C328193AB8DB05EB /* Pods_WatercolorsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,12 +132,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51BB02A44BFD63A83C0408B /* Pods_WatercolorsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372409B459717099F1620232 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B951EB84E28E25CA86D4348 /* Pods-Watercolors.debug.xcconfig */,
+				16377F175BAD21241E946629 /* Pods-Watercolors.release.xcconfig */,
+				25905FAEDAB144FF7A81B431 /* Pods-WatercolorsTests.debug.xcconfig */,
+				88BE69C0CEA67BE3BD2DE705 /* Pods-WatercolorsTests.release.xcconfig */,
+				70D10C59D56D44B8FDCFFE70 /* Pods-WatercolorsUITests.debug.xcconfig */,
+				89BF1823962519711FAB8018 /* Pods-WatercolorsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4805C7601E942CBE00C885F4 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +159,8 @@
 				4805C7831E942CBF00C885F4 /* WatercolorsTests */,
 				4805C78E1E942CBF00C885F4 /* WatercolorsUITests */,
 				4805C76A1E942CBE00C885F4 /* Products */,
+				372409B459717099F1620232 /* Pods */,
+				DC701D1A15D3F9140FDC0A77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +184,8 @@
 				F04411C41E9BDE950046A999 /* CoreDataStack.swift */,
 				4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */,
 				4805C77B1E942CBE00C885F4 /* Info.plist */,
+				482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */,
+				482E22111EFF3F9700D7CEEA /* Emitter.swift */,
 				48CFE1AE1E9435DF008AEDBC /* Views */,
 			);
 			path = Watercolors;
@@ -174,6 +212,7 @@
 		48CFE1AE1E9435DF008AEDBC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				489D060A1EE3239400ED20B0 /* LoginVC.swift */,
 				F0BB5EDE1E9D8E17007E9878 /* ColorFamilyTVC.swift */,
 				F00B699A1E9C41930021F055 /* SearchPaintTVC.swift */,
 				F00B699B1E9C41930021F055 /* SearchPigmentTCV.swift */,
@@ -186,6 +225,16 @@
 				F00B69A61E9C43060021F055 /* TableViewCells */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		DC701D1A15D3F9140FDC0A77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6820E0CB5B2FA27595C3F38 /* Pods_Watercolors.framework */,
+				E9C4A2446281BD3B56D8A1A6 /* Pods_WatercolorsTests.framework */,
+				BC9E6349AB58C386A927F32B /* Pods_WatercolorsUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F00B69A61E9C43060021F055 /* TableViewCells */ = {
@@ -222,9 +271,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4805C7941E942CBF00C885F4 /* Build configuration list for PBXNativeTarget "Watercolors" */;
 			buildPhases = (
+				161B1D3FD1EFF5D063086DC4 /* [CP] Check Pods Manifest.lock */,
 				4805C7651E942CBE00C885F4 /* Sources */,
 				4805C7661E942CBE00C885F4 /* Frameworks */,
 				4805C7671E942CBE00C885F4 /* Resources */,
+				889CE99E5AC582B9BBFDC614 /* [CP] Embed Pods Frameworks */,
+				F5833DFE2523A18342577042 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,9 +291,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4805C7971E942CBF00C885F4 /* Build configuration list for PBXNativeTarget "WatercolorsTests" */;
 			buildPhases = (
+				84898B4C07A95D50F77DEEF8 /* [CP] Check Pods Manifest.lock */,
 				4805C77C1E942CBF00C885F4 /* Sources */,
 				4805C77D1E942CBF00C885F4 /* Frameworks */,
 				4805C77E1E942CBF00C885F4 /* Resources */,
+				C588F80B9107BA1CC86CAC42 /* [CP] Embed Pods Frameworks */,
+				3FF7A92E7185D37444CE7A1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,9 +312,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4805C79A1E942CBF00C885F4 /* Build configuration list for PBXNativeTarget "WatercolorsUITests" */;
 			buildPhases = (
+				46487871DF2143F6E7E6164F /* [CP] Check Pods Manifest.lock */,
 				4805C7871E942CBF00C885F4 /* Sources */,
 				4805C7881E942CBF00C885F4 /* Frameworks */,
 				4805C7891E942CBF00C885F4 /* Resources */,
+				0C192996D340216500477FF9 /* [CP] Embed Pods Frameworks */,
+				9332E292F3F280A449111E31 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,6 +384,7 @@
 			files = (
 				4805C77A1E942CBE00C885F4 /* LaunchScreen.storyboard in Resources */,
 				4805C7771E942CBE00C885F4 /* Assets.xcassets in Resources */,
+				482E22101EFC1EDB00D7CEEA /* GoogleService-Info.plist in Resources */,
 				F04411A21E9BDA850046A999 /* pigment.json in Resources */,
 				F04411A11E9BDA850046A999 /* paint.json in Resources */,
 				4805C7721E942CBE00C885F4 /* Main.storyboard in Resources */,
@@ -348,6 +407,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C192996D340216500477FF9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatercolorsUITests/Pods-WatercolorsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		161B1D3FD1EFF5D063086DC4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3FF7A92E7185D37444CE7A1B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatercolorsTests/Pods-WatercolorsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46487871DF2143F6E7E6164F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		84898B4C07A95D50F77DEEF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		889CE99E5AC582B9BBFDC614 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9332E292F3F280A449111E31 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatercolorsUITests/Pods-WatercolorsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C588F80B9107BA1CC86CAC42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatercolorsTests/Pods-WatercolorsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5833DFE2523A18342577042 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4805C7651E942CBE00C885F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -355,6 +552,7 @@
 			files = (
 				F00B698A1E9BFB790021F055 /* Paint+CoreDataClass.swift in Sources */,
 				4805C76D1E942CBE00C885F4 /* AppDelegate.swift in Sources */,
+				482E22121EFF3F9700D7CEEA /* Emitter.swift in Sources */,
 				F00B698B1E9BFB790021F055 /* Paint+CoreDataProperties.swift in Sources */,
 				F00B69A31E9C42210021F055 /* PigmentInfoTVC.swift in Sources */,
 				48CFE1AD1E9435CB008AEDBC /* SelectColorVC.swift in Sources */,
@@ -375,6 +573,7 @@
 				F0BB5EDF1E9D8E17007E9878 /* ColorFamilyTVC.swift in Sources */,
 				F00B69A81E9C433F0021F055 /* SearchPaintTableViewCell.swift in Sources */,
 				F04411C51E9BDE950046A999 /* CoreDataStack.swift in Sources */,
+				489D060B1EE3239400ED20B0 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +725,7 @@
 		};
 		4805C7951E942CBF00C885F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B951EB84E28E25CA86D4348 /* Pods-Watercolors.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZP5B9HS488;
@@ -539,6 +739,7 @@
 		};
 		4805C7961E942CBF00C885F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16377F175BAD21241E946629 /* Pods-Watercolors.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZP5B9HS488;
@@ -552,6 +753,7 @@
 		};
 		4805C7981E942CBF00C885F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25905FAEDAB144FF7A81B431 /* Pods-WatercolorsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -566,6 +768,7 @@
 		};
 		4805C7991E942CBF00C885F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88BE69C0CEA67BE3BD2DE705 /* Pods-WatercolorsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -580,6 +783,7 @@
 		};
 		4805C79B1E942CBF00C885F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70D10C59D56D44B8FDCFFE70 /* Pods-WatercolorsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = ZP5B9HS488;
@@ -595,6 +799,7 @@
 		};
 		4805C79C1E942CBF00C885F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89BF1823962519711FAB8018 /* Pods-WatercolorsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = ZP5B9HS488;

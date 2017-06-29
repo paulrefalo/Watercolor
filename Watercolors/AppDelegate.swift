@@ -7,27 +7,65 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import Firebase
 import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var  coreDataStack = CoreDataStack(modelName: "Watercolors")
+    lazy var coreDataStack = CoreDataStack(modelName: "Watercolors")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-
+        
         guard let navController = window?.rootViewController as? UINavigationController,
             let viewController = navController.topViewController as? ViewController else {
                 return true
         }
 
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vc: UIViewController
+        
+        //test line to force skip loginVC
+//        UserDefaults.standard.set("Leisa", forKey: "name")
+//        UserDefaults.standard.set(nil, forKey: "name")
+        
+//        if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
+        
+        print("Current ID", FBSDKAccessToken.current())
+        if (FBSDKAccessToken.current() == nil) {
+            // Not logged in to fb so -> show onboarding screen
+            vc = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+        } else {
+            // Already logged into FB so -> show main screen
+            vc = storyboard.instantiateInitialViewController()!
+        }
+        
+        // guard navController block was here
+        
+        
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+
         viewController.managedContext = coreDataStack.managedContext
+        
+        FIRApp.configure()
 
         importJSONSeedDataIfNeeded()
 
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        return handled
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -149,6 +187,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-coreDataStack.saveContext()
-}
+        coreDataStack.saveContext()
+    } // end func importJSONSeedData
 }

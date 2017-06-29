@@ -11,19 +11,20 @@ import CoreData
 class ColorFamilyTVC: UITableViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: - Properties
+    
     var managedContext: NSManagedObjectContext!
     var colorFamily: String!
     var fetchedResultsController : NSFetchedResultsController<Paint>!
-     // MARK: - IBOutlets
+    
+    // MARK: - IBOutlets
 
 
-          // MARK: - View Life Cycle
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title=colorFamily
+        title = colorFamily
         self.initializeFetchedResultsController()
-
     }
 
     func initializeFetchedResultsController() {
@@ -48,7 +49,6 @@ class ColorFamilyTVC: UITableViewController, NSFetchedResultsControllerDelegate 
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +86,6 @@ class ColorFamilyTVC: UITableViewController, NSFetchedResultsControllerDelegate 
             cell.transparentOutlet.text = comboStr
         }
 
-
         //Populate the cell from the object
         return cell
     }
@@ -114,7 +113,6 @@ class ColorFamilyTVC: UITableViewController, NSFetchedResultsControllerDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         print("prepareForSeque to PaintView")
-
 
         if let indexPath = self.tableView.indexPathForSelectedRow {
 
