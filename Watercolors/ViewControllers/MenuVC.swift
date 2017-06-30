@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        managedContext = appDelegate.coreDataStack.managedContext
+        managedContext = appDelegate.coreDataStack?.managedContext
     }
     
     @IBAction func displayLoginVCmodally(_ sender: UIBarButtonItem) {
