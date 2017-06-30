@@ -10,6 +10,7 @@ import UIKit
 
 
 class Emitter {
+    
     class func get(image: UIImage) -> CAEmitterLayer {
         let emitter = CAEmitterLayer()
         emitter.emitterShape = kCAEmitterLayerLine
@@ -25,12 +26,12 @@ class Emitter {
         cell.contents = image.cgImage
         cell.alphaRange = 0.5
         cell.birthRate = 0.8
-        cell.lifetime = 50 // seconds
-        cell.velocity = CGFloat(25) // How fast cells are emitted
-        cell.emissionLongitude = (180 * (.pi / 180)) // 0° is straight up, 180° is straight down
-        cell.emissionRange = (45 * (.pi / 180)) // Variation in emission longitude
-        cell.scale = 0.4 // 1 is normal size. < 1 will make it smaller.
-        cell.scaleRange = 1.0 // Variation in size
+        cell.lifetime = 50                                  // time in seconds
+        cell.velocity = CGFloat(25)
+        cell.emissionLongitude = (180 * (.pi / 180))        // Radians
+        cell.emissionRange = (45 * (.pi / 180))             // Radians
+        cell.scale = 0.4                                    // Percent of size
+        cell.scaleRange = 1.0
         cells.append(cell)
         
         return cells

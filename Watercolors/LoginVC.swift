@@ -12,6 +12,8 @@ import Firebase
 
 class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     
+    // MARK: - IBOutlets and Actions
+    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var coverView: UIView!
@@ -24,6 +26,8 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             presentInitialVC()
         }
     }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +146,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func presentInitialVC() {
+    func presentInitialVC() {  // transition to MenuVC
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
         self.present(vc, animated: true, completion: nil)
     }

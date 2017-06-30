@@ -42,8 +42,7 @@ class ViewController: UIViewController {
             return
         }
         
-        print("*** From VC Successfully logged in with facebook...")
-        
+        print("*** From VC Successfully logged in with facebook...")        
     }
 
     // MARK: - Navigation

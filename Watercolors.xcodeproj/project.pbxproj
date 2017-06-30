@@ -68,17 +68,17 @@
 		4805C76C1E942CBE00C885F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4805C7711E942CBE00C885F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4805C7741E942CBE00C885F4 /* Watercolors.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Watercolors.xcdatamodel; sourceTree = "<group>"; };
-		4805C7761E942CBE00C885F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4805C7761E942CBE00C885F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Watercolors/Assets.xcassets; sourceTree = "<group>"; };
 		4805C7791E942CBE00C885F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4805C77B1E942CBE00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4805C77B1E942CBE00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Watercolors/Info.plist; sourceTree = "<group>"; };
 		4805C7801E942CBF00C885F4 /* WatercolorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatercolorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4805C7841E942CBF00C885F4 /* WatercolorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatercolorsTests.swift; sourceTree = "<group>"; };
 		4805C7861E942CBF00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4805C78B1E942CBF00C885F4 /* WatercolorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatercolorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4805C78F1E942CBF00C885F4 /* WatercolorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatercolorsUITests.swift; sourceTree = "<group>"; };
 		4805C7911E942CBF00C885F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		482E22111EFF3F9700D7CEEA /* Emitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Watercolors/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		482E22111EFF3F9700D7CEEA /* Emitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Emitter.swift; path = Watercolors/Emitter.swift; sourceTree = "<group>"; };
 		489D060A1EE3239400ED20B0 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		48CFE1AC1E9435CB008AEDBC /* SelectColorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectColorVC.swift; path = ViewControllers/SelectColorVC.swift; sourceTree = "<group>"; };
 		6B951EB84E28E25CA86D4348 /* Pods-Watercolors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watercolors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,14 +179,9 @@
 			children = (
 				4805C7701E942CBE00C885F4 /* Main.storyboard */,
 				4805C76C1E942CBE00C885F4 /* AppDelegate.swift */,
-				F04411A31E9BDA8C0046A999 /* Data */,
-				4805C7761E942CBE00C885F4 /* Assets.xcassets */,
-				F04411C41E9BDE950046A999 /* CoreDataStack.swift */,
-				4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */,
-				4805C77B1E942CBE00C885F4 /* Info.plist */,
-				482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */,
-				482E22111EFF3F9700D7CEEA /* Emitter.swift */,
 				48CFE1AE1E9435DF008AEDBC /* Views */,
+				486871161F06F6730001747A /* Resources */,
+				F04411A31E9BDA8C0046A999 /* Data */,
 			);
 			path = Watercolors;
 			sourceTree = "<group>";
@@ -207,6 +202,19 @@
 				4805C7911E942CBF00C885F4 /* Info.plist */,
 			);
 			path = WatercolorsUITests;
+			sourceTree = "<group>";
+		};
+		486871161F06F6730001747A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4805C7761E942CBE00C885F4 /* Assets.xcassets */,
+				482E22111EFF3F9700D7CEEA /* Emitter.swift */,
+				4805C77B1E942CBE00C885F4 /* Info.plist */,
+				4805C7781E942CBE00C885F4 /* LaunchScreen.storyboard */,
+				482E220F1EFC1EDB00D7CEEA /* GoogleService-Info.plist */,
+			);
+			name = Resources;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		48CFE1AE1E9435DF008AEDBC /* Views */ = {
@@ -253,6 +261,7 @@
 		F04411A31E9BDA8C0046A999 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F04411C41E9BDE950046A999 /* CoreDataStack.swift */,
 				F00B69861E9BFB790021F055 /* Paint+CoreDataClass.swift */,
 				F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */,
 				F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */,
@@ -623,6 +632,7 @@
 				4805C7791E942CBE00C885F4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = Watercolors;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
