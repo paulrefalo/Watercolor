@@ -19,35 +19,18 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     
-    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-       super.viewDidLoad()
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        managedContext = appDelegate.coreDataStack.managedContext
     }
-
-    /*
+    
     @IBAction func displayLoginVCmodally(_ sender: UIBarButtonItem) {
-        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         self.present(vc, animated: true, completion: nil)
-
-        
-//        let loginManager = FBSDKLoginManager()
-//        loginManager.logOut() // this is an instance function
-        
-//        let loginButton = FBSDKLoginButton()
-//        loginButton.readPermissions = ["public_profile", "email"]
-//        
-//        loginButton.delegate = self//  as! FBSDKLoginButtonDelegate
-        
-        
-//        let loginView : FBSDKLoginManager = FBSDKLoginManager()
-//        loginView.loginBehavior = FBSDKLoginBehavior.web
-    
-        
-    } */
+    }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("*** From VC Did log out of facebook")
