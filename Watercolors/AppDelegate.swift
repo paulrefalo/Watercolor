@@ -77,13 +77,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fetchRequest = NSFetchRequest<Paint>(entityName: "Paint")
         let count = try! coreDataStack?.managedContext.count(for: fetchRequest)
 
-        print("paint count:" , count)
+        print("paint count:" , count as Any)
 
 
         let fetchRequest2 = NSFetchRequest<Pigment>(entityName: "Pigment")
         let count2 = try! coreDataStack?.managedContext.count(for: fetchRequest2)
 
-        print("pigment count: ", count2)
+        print("pigment count: ", count2 as Any)
 
         // load if there isn't data
         guard count == 0 else { return }
@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // load pigment
         let pigmentJsonURL = Bundle.main.url(forResource: "pigment", withExtension: "json")!
-        let pigmentJsonData = NSData(contentsOf: pigmentJsonURL) as! Data
+        let pigmentJsonData = NSData(contentsOf: pigmentJsonURL)! as Data
         let pigmentJsonArray = try! JSONSerialization.jsonObject(with: pigmentJsonData, options: [.allowFragments]) as! [AnyObject]
 
         for pigmentJsonDictionary in pigmentJsonArray {

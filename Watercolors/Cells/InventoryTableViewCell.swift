@@ -15,9 +15,6 @@ class InventoryTableViewCell: UITableViewCell {
     @IBOutlet var needImageView: UIImageView!
     @IBOutlet var nameLabelOutlet: UILabel!
 
-
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

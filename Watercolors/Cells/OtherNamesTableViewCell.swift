@@ -11,6 +11,7 @@ import UIKit
 class OtherNamesTableViewCell: UITableViewCell {
 
     @IBOutlet var otherNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,6 +11,7 @@ import UIKit
 class PaintTableViewCell: UITableViewCell {
 
     @IBOutlet var paintLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

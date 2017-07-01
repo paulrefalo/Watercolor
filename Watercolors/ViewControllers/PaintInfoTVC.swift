@@ -11,6 +11,7 @@ import CoreData
 class PaintInfoTVC: UITableViewController {
 
     // MARK: - Properties
+    
     var currentPaint: Paint!
     var pigments:[Pigment] = []
     var managedContext: NSManagedObjectContext!
@@ -31,8 +32,8 @@ class PaintInfoTVC: UITableViewController {
     @IBOutlet var needSwitch: UISwitch!
 
 
-
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

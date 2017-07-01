@@ -12,11 +12,13 @@ import CoreData
 class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - Properties
+    
     var managedContext: NSManagedObjectContext!
     var fetchedResultsController : NSFetchedResultsController<Pigment>!
     var searchString:String = ""
     
     // MARK: - IBOutlets
+    
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<Pigment>(entityName: "Pigment")
         let pigmentSort = NSSortDescriptor(key: "pigment_name", ascending: true)
@@ -32,6 +34,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
     }
     
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

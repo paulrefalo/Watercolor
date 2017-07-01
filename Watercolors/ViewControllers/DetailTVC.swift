@@ -8,17 +8,21 @@
 
 import UIKit
 import CoreData
+
 class DetailTVC: UITableViewController {
 
     // MARK: - Properties
+    
     var currentPigment: Pigment!
 
     // MARK: - IBOutlets
+    
     @IBOutlet var detailTextView: UITextView!
     @IBOutlet var pigmentImageView: UIImageView!
     @IBOutlet var pigmentNameLabel: UILabel!
 
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
