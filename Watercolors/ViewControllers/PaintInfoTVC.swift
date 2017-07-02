@@ -11,10 +11,18 @@ import CoreData
 class PaintInfoTVC: UITableViewController {
 
     // MARK: - Properties
-    
+
     var currentPaint: Paint!
     var pigments:[Pigment] = []
     var managedContext: NSManagedObjectContext!
+
+    // Cell Identifiers
+
+    let pigementCellIdentifier = "PigmentCell"
+    let paintCellIdentifier = "PaintCell"
+    let otherNamesCellIdentifier = "OtherNamesCell"
+
+    let estimatedCellHeight: CGFloat = 80
 
 
     // MARK: - IBOutlets
@@ -33,9 +41,12 @@ class PaintInfoTVC: UITableViewController {
 
 
     // MARK: - View Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        managedContext = appDelegate.coreDataStack?.managedContext
 
         // setup the view portion of the screen
         let paintImageName = String(currentPaint.paint_number)
@@ -66,6 +77,10 @@ class PaintInfoTVC: UITableViewController {
 
         pigments = currentPaint.contains?.allObjects as! [Pigment]
 
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = estimatedCellHeight;
+
+        tableView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,33 +111,49 @@ class PaintInfoTVC: UITableViewController {
         // Configure the cell...
         if indexPath.section == 0 {
 
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PigmentCell", for: indexPath) as! SearchPigmentTableViewCell
+
+            let cell: PigmentTableViewCell = (tableView.dequeueReusableCell(withIdentifier: pigementCellIdentifier)! as? PigmentTableViewCell)!
+
+
             let thisPigment = pigments[indexPath.row]
-          // cell.swatchImageView.image = UIImage(named: thisPigment.image_name ?? "")
-         //   cell.nameLabelOutlet.text = thisPigment.pigment_words
-     //       cell.pigmentOutlet.text = thisPigment.pigment_code
-     //       cell.pigmentOutlet.text = thisPigment.pigment_words
+
+            if let pigmentImageName = thisPigment.image_name {
+
+                if let pigmentImage = UIImage(named: pigmentImageName) {
+
+                    cell.swatchImageView.image = pigmentImage
+                }
+            }
+            cell.nameLabelOutlet.text = thisPigment.pigment_words
+            cell.pigmentOutlet.text = thisPigment.pigment_code
+            cell.chemicalNameOutlet.text = thisPigment.chemical_name
+
 
             return cell
 
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PaintCell", for: indexPath) as! PaintTableViewCell
-            cell.paintLabel.text = currentPaint.paint_history
+            let cell = tableView.dequeueReusableCell(withIdentifier: paintCellIdentifier, for: indexPath) as! PaintTableViewCell
+            let  paintHistoryText = currentPaint.paint_history
+            cell.paintLabel.text = paintHistoryText
             return cell
 
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OtherNamesCell", for: indexPath) as! OtherNamesTableViewCell
-            cell.otherNameLabel.text = currentPaint.other_names
+            let cell = tableView.dequeueReusableCell(withIdentifier: otherNamesCellIdentifier, for: indexPath) as! OtherNamesTableViewCell
+            let otherNamesText = currentPaint.other_names
+            cell.otherNameLabel.text = otherNamesText
             return cell
         }
 
     }
 
-
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
 
+        if indexPath.section == 0 {
+            return 80
+        }
+
+        return UITableViewAutomaticDimension
+    }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 35
     }

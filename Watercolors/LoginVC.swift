@@ -147,8 +147,12 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func presentInitialVC() {  // transition to MenuVC
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-        self.present(vc, animated: true, completion: nil)
+
+
+        if let tabViewController = storyboard?.instantiateViewController(withIdentifier: "InitialTabBarController") as? UITabBarController {
+            present(tabViewController, animated: true, completion: nil)
+        }
+
     }
 
     

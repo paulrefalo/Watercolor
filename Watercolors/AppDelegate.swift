@@ -21,12 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-        
-        guard let navController = window?.rootViewController as? UINavigationController,
-            let viewController = navController.topViewController as? ViewController else {
-                return true
-        }
-
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
@@ -46,13 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc = storyboard.instantiateInitialViewController()!
         }
         
-        // guard navController block was here
-        
-        
+     
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
 
-        viewController.managedContext = coreDataStack?.managedContext
         
         FIRApp.configure()
 
@@ -152,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let pigment_composition = paintJsonDictionary["pigment_composition"] as? String ?? ""
             let paint_number = paintJsonDictionary["paint_number"] as? Int16 ?? 0
             let paint_name = paintJsonDictionary["paint_name"] as? String ?? ""
-            let paint_history = paintJsonDictionary["paint_history"] as? String ?? ""
+            let paint_history = paintJsonDictionary["history"] as? String ?? ""
             let other_names = paintJsonDictionary["other_names"] as? String ?? ""
             let opacity = paintJsonDictionary["opacity"] as? String ?? ""
             let need = paintJsonDictionary["need"] as? Bool ?? false
