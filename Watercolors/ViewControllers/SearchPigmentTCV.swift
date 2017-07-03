@@ -51,6 +51,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         searchBar.delegate = self
 
 
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -109,7 +110,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
-        print("prepareForSeque to DetailView")
+        print("prepareForSeque to Pigment Info View")
 
 
         if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -134,7 +135,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
 
             let predicate1 = NSPredicate(format: "pigment_name contains [cd] %@", searchText)
             let predicate2 = NSPredicate(format: "pigment_code contains [cd] %@", searchText)
-            let predicate3 = NSPredicate(format: " chemical_name contains [cd] %@", searchText)
+            let predicate3 = NSPredicate(format: "chemical_name contains [cd] %@", searchText)
 
             searchPredicate = NSCompoundPredicate(orPredicateWithSubpredicates:[predicate1, predicate2, predicate3])
             

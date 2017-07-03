@@ -14,23 +14,22 @@ class PigmentInfoTVC: UITableViewController {
     // MARK: - Properties
 
     var currentPigment: Pigment!
-    let estimatedCellHeight: CGFloat = 50
+    let estimatedCellHeight: CGFloat = 150
     var paints:[Paint] = []
 
 
     // MARK: - IBOutlets
 
-    @IBOutlet var PigmentImageView: UIImageView!
-
-    @IBOutlet var PigmentTypeLabel: UILabel!
-    @IBOutlet var ChemicalNameLabel: UILabel!
-    @IBOutlet var ChemicalStructureLabel: UILabel!
-    @IBOutlet var PropertiesLabel: UILabel!
-    @IBOutlet var PermanenceLabel: UILabel!
-    @IBOutlet var ToxicityLabel: UILabel!
-    @IBOutlet var HistoryLabel: UILabel!
-    @IBOutlet var AltNamesLabel: UILabel!
-
+    @IBOutlet var pigmentImageView: UIImageView!
+    @IBOutlet var pigmentTypeLabel: UILabel!
+    @IBOutlet var chemicalNameLabel: UILabel!
+    @IBOutlet var chemicalStructureLabel: UILabel!
+    @IBOutlet var propertiesLabel: UILabel!
+    @IBOutlet var permanenceLabel: UILabel!
+    @IBOutlet var toxicityLabel: UILabel!
+    @IBOutlet var historyLabel: UILabel!
+    @IBOutlet var altNamesLabel: UILabel!
+    @IBOutlet var pigmentTitleLabel: UILabel!
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -40,15 +39,19 @@ class PigmentInfoTVC: UITableViewController {
         tableView.estimatedRowHeight = estimatedCellHeight;
 
         tableView.delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
 
-        self.title = currentPigment.pigment_name
 
-        ChemicalNameLabel.text = currentPigment.chemical_name
-        ChemicalStructureLabel.text = currentPigment.chemical_formula
-        PropertiesLabel.text = currentPigment.properties
-        PermanenceLabel.text = currentPigment.permanence
-        ToxicityLabel.text = currentPigment.toxicity
-        HistoryLabel.text = currentPigment.history
+        self.title = currentPigment.pigment_code
+        pigmentTitleLabel.text = currentPigment.pigment_words
+
+        chemicalNameLabel.text = currentPigment.chemical_name
+        chemicalStructureLabel.text = currentPigment.chemical_formula
+        propertiesLabel.text = currentPigment.properties
+        permanenceLabel.text = currentPigment.permanence
+        toxicityLabel.text = currentPigment.toxicity
+        historyLabel.text = currentPigment.history
 
 
         //TODO: better way to get names???
@@ -58,33 +61,33 @@ class PigmentInfoTVC: UITableViewController {
         for paint in paints {
             let theName = paint.paint_name
 
-            if AltNamesLabel.text == "None" {
-                AltNamesLabel.text = theName
+            if altNamesLabel.text == "None" {
+                altNamesLabel.text = theName
             } else {
-                AltNamesLabel.text = AltNamesLabel.text! + ", " + theName!
+                altNamesLabel.text = altNamesLabel.text! + ", " + theName!
             }
         }
 
         guard let pigmentImageName = currentPigment.image_name  else { return}
 
-        PigmentImageView.image = UIImage(named: pigmentImageName)
-
+        pigmentImageView.image = UIImage(named: pigmentImageName)
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        tableView.layoutIfNeeded()
 
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         // first section is fixed, others are dynamic
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                return 50
-            } else if indexPath.row == 1 {
-                return 100
+                return 140
             }
         }
         

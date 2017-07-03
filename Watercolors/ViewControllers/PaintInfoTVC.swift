@@ -45,6 +45,15 @@ class PaintInfoTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = estimatedCellHeight;
+
+        tableView.delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.title = String(currentPaint.paint_number)
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedContext = appDelegate.coreDataStack.managedContext
 
@@ -77,10 +86,7 @@ class PaintInfoTVC: UITableViewController {
 
         pigments = currentPaint.contains?.allObjects as! [Pigment]
 
-        tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = estimatedCellHeight;
 
-        tableView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
