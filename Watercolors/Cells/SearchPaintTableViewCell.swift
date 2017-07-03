@@ -15,6 +15,8 @@ class SearchPaintTableViewCell: UITableViewCell {
     @IBOutlet var lightFastOutlet: UILabel!
     @IBOutlet var transparentOutlet: UILabel!
 
+    @IBOutlet var haveImageView: UIImageView!
+    @IBOutlet var needImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -14,9 +14,12 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
 
     // MARK: - Properties
     var managedContext: NSManagedObjectContext!
+
     var fetchedResultsController : NSFetchedResultsController<Paint>!
+    var inventoryPredicate:NSPredicate?
 
     var searchString:String = ""
+    @IBOutlet var inventorySegmentedControl: UISegmentedControl!
 
     // MARK: - IBOutlets
 
@@ -53,6 +56,20 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         cell.lightFastOutlet.text = this_paint.lightfast_rating
 
 
+        if (this_paint.need) {
+            cell.needImageView.image = UIImage(named:"Need")
+        } else {
+            cell.needImageView.image = UIImage(named:"Need-Not")
+
+        }
+
+        if (this_paint.have) {
+            cell.haveImageView.image = UIImage(named:"Have")
+        } else {
+            cell.haveImageView.image = UIImage(named:"Have-Not")
+
+        }
+
         if let opacity = this_paint.opacity, let staining = this_paint.staining_granulating {
             let comboStr =  "\(opacity) - \(staining)"
             cell.transparentOutlet.text = comboStr
@@ -76,7 +93,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return 90.0
     }
 
 
@@ -111,6 +128,9 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         let pigmentSort = NSSortDescriptor(key: "paint_name", ascending: true)
         request.sortDescriptors = [pigmentSort]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+
+        request.predicate = inventoryPredicate
+
         fetchedResultsController.delegate = self
 
         do {
@@ -139,5 +159,35 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         
         print("*** From VC Successfully logged in with facebook...")
     }
+    @IBAction func statusChanged(_ sender: Any) {
+
+        switch (inventorySegmentedControl.selectedSegmentIndex) {
+        case 0:
+            inventoryPredicate = nil
+            break
+        case 1:
+
+            let haveValue = true
+            inventoryPredicate = NSPredicate(format: "have == %@", haveValue as CVarArg)
+
+            break
+        case 2:
+            let haveValue = false
+            inventoryPredicate = NSPredicate(format: "have == %@", haveValue as CVarArg)
+            break
+            case 3:
+                let needValue = true
+                inventoryPredicate = NSPredicate(format: "need == %@", needValue as CVarArg)
+            break
+        default:
+            break
+
+        }
+        initializeFetchedResultsController()
+        tableView.reloadData()
+    }
+
+
+
     
 }

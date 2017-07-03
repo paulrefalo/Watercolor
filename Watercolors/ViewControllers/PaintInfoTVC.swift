@@ -183,7 +183,11 @@ class PaintInfoTVC: UITableViewController {
             haveImage.image = UIImage(named: "Have-Not")
 
         }
-        try!managedContext.save()
+        do {
+            try managedContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
     }
 
     @IBAction func needSwitched(_ sender: Any) {
@@ -197,7 +201,11 @@ class PaintInfoTVC: UITableViewController {
             needImage.image = UIImage(named: "Need-Not")
 
         }
-        try!managedContext.save()
+        do {
+            try managedContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
     }
 
 
