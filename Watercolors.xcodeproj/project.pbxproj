@@ -26,7 +26,6 @@
 		F00B698B1E9BFB790021F055 /* Paint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */; };
 		F00B698C1E9BFB790021F055 /* Pigment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */; };
 		F00B698D1E9BFB790021F055 /* Pigment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69891E9BFB790021F055 /* Pigment+CoreDataProperties.swift */; };
-		F00B699C1E9C41930021F055 /* SearchPaintTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B699A1E9C41930021F055 /* SearchPaintTVC.swift */; };
 		F00B699D1E9C41930021F055 /* SearchPigmentTCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B699B1E9C41930021F055 /* SearchPigmentTCV.swift */; };
 		F00B69A11E9C41FE0021F055 /* PaintInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69A01E9C41FE0021F055 /* PaintInfoTVC.swift */; };
 		F00B69A31E9C42210021F055 /* PigmentInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00B69A21E9C42210021F055 /* PigmentInfoTVC.swift */; };
@@ -90,7 +89,6 @@
 		F00B69871E9BFB790021F055 /* Paint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Paint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F00B69881E9BFB790021F055 /* Pigment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pigment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F00B69891E9BFB790021F055 /* Pigment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pigment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F00B699A1E9C41930021F055 /* SearchPaintTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPaintTVC.swift; path = ViewControllers/SearchPaintTVC.swift; sourceTree = "<group>"; };
 		F00B699B1E9C41930021F055 /* SearchPigmentTCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPigmentTCV.swift; path = ViewControllers/SearchPigmentTCV.swift; sourceTree = "<group>"; };
 		F00B69A01E9C41FE0021F055 /* PaintInfoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaintInfoTVC.swift; path = ViewControllers/PaintInfoTVC.swift; sourceTree = "<group>"; };
 		F00B69A21E9C42210021F055 /* PigmentInfoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PigmentInfoTVC.swift; path = ViewControllers/PigmentInfoTVC.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				489D060A1EE3239400ED20B0 /* LoginVC.swift */,
-				F00B699A1E9C41930021F055 /* SearchPaintTVC.swift */,
 				F00B699B1E9C41930021F055 /* SearchPigmentTCV.swift */,
 				F00B69A01E9C41FE0021F055 /* PaintInfoTVC.swift */,
 				F00B69A21E9C42210021F055 /* PigmentInfoTVC.swift */,
@@ -563,7 +560,6 @@
 				F0BB5EE31E9D9AAF007E9878 /* PaintTableViewCell.swift in Sources */,
 				F00B698D1E9BFB790021F055 /* Pigment+CoreDataProperties.swift in Sources */,
 				F00B69B21E9C82C80021F055 /* InventoryTableViewCell.swift in Sources */,
-				F00B699C1E9C41930021F055 /* SearchPaintTVC.swift in Sources */,
 				F00B69A11E9C41FE0021F055 /* PaintInfoTVC.swift in Sources */,
 				4805C7751E942CBE00C885F4 /* Watercolors.xcdatamodeld in Sources */,
 				4868711A1F0954060001747A /* PaintListTableViewController.swift in Sources */,

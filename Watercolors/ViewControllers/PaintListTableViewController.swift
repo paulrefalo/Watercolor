@@ -10,15 +10,16 @@ import UIKit
 import CoreData
 import FBSDKLoginKit
 
-class PaintListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class PaintListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate  {
 
     // MARK: - Properties
     var managedContext: NSManagedObjectContext!
 
     var fetchedResultsController : NSFetchedResultsController<Paint>!
+    var searchResultsController: NSFetchedResultsController<NSFetchRequestResult>?
+    var searchPredicate: NSCompoundPredicate?
     var inventoryPredicate:NSPredicate?
 
-    var searchString:String = ""
     @IBOutlet var inventorySegmentedControl: UISegmentedControl!
 
     // MARK: - IBOutlets
@@ -32,6 +33,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedContext = appDelegate.coreDataStack.managedContext
         self.initializeFetchedResultsController()
+        searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,7 +131,21 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         request.sortDescriptors = [pigmentSort]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
 
-        request.predicate = inventoryPredicate
+        // limit table by segmented control and/or searchbar text
+        if let searchPredicate  = searchPredicate {
+            if let inventoryPredicate = inventoryPredicate {
+
+                // has both segmented controll filter and search text
+                request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [searchPredicate, inventoryPredicate])
+            } else {
+                // has search text only
+                request.predicate = searchPredicate
+            }
+
+        } else {
+            // has segmented control only
+            request.predicate = inventoryPredicate
+        }
 
         fetchedResultsController.delegate = self
 
@@ -156,10 +172,10 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
             print(error)
             return
         }
-        
+
         print("*** From VC Successfully logged in with facebook...")
     }
-    
+
     @IBAction func statusChanged(_ sender: Any) {
 
         switch (inventorySegmentedControl.selectedSegmentIndex) {
@@ -176,9 +192,9 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
             let haveValue = false
             inventoryPredicate = NSPredicate(format: "have == %@", haveValue as CVarArg)
             break
-            case 3:
-                let needValue = true
-                inventoryPredicate = NSPredicate(format: "need == %@", needValue as CVarArg)
+        case 3:
+            let needValue = true
+            inventoryPredicate = NSPredicate(format: "need == %@", needValue as CVarArg)
             break
         default:
             break
@@ -189,6 +205,28 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     }
 
 
+    //Search Functionality
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        if !searchText.isEmpty  {
 
+            let predicate1 = NSPredicate(format: "paint_name contains [cd] %@", searchText)
+            let predicate2 = NSPredicate(format: "paint_number contains [cd] %@", searchText)
+            let predicate3 = NSPredicate(format: "pigments contains [cd] %@", searchText)
+            let predicate4 = NSPredicate(format: "other_names contains [cd] %@", searchText)
+            let predicate5 = NSPredicate(format: "staining_granulating contains [cd] %@", searchText)
+            let predicate6 = NSPredicate(format: "opacity contains [cd] %@", searchText)
+            let predicate7 = NSPredicate(format: "color_family contains [cd] %@", searchText)
+            
+            searchPredicate = NSCompoundPredicate(orPredicateWithSubpredicates:[predicate1, predicate2, predicate3, predicate4, predicate5, predicate6, predicate7])
+            
+            
+        } else {
+            searchPredicate = nil
+            
+        }
+        initializeFetchedResultsController()
+        tableView.reloadData()
+    }
     
 }

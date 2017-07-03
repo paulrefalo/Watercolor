@@ -298,7 +298,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search" id="hrn-Gw-4xU">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="Z1U-Kt-SMf">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -364,11 +364,27 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Pigments" id="G7p-UD-UrN"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Z1U-Kt-SMf" id="whF-nw-pui"/>
+                        <outlet property="searchDisplayController" destination="u1i-wP-ZSZ" id="p53-oY-KUZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fvx-EY-TLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="2V4-bY-oPH">
+                <searchDisplayController id="2V4-bY-oPH"/>
+                <searchDisplayController id="iR7-FJ-JFh">
                     <connections>
-                        <outlet property="searchBar" destination="hrn-Gw-4xU" id="mIZ-wd-XZw"/>
+                        <outlet property="delegate" destination="JOz-Jr-hGG" id="nTF-7J-um5"/>
+                        <outlet property="searchContentsController" destination="JOz-Jr-hGG" id="pU0-ez-GpA"/>
+                        <outlet property="searchResultsDataSource" destination="JOz-Jr-hGG" id="Knl-EO-18v"/>
+                        <outlet property="searchResultsDelegate" destination="JOz-Jr-hGG" id="Une-nn-akh"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="u1i-wP-ZSZ">
+                    <connections>
+                        <outlet property="delegate" destination="JOz-Jr-hGG" id="H1p-1v-ilb"/>
+                        <outlet property="searchContentsController" destination="JOz-Jr-hGG" id="fj3-ie-hde"/>
+                        <outlet property="searchResultsDataSource" destination="JOz-Jr-hGG" id="FCv-2f-s1M"/>
+                        <outlet property="searchResultsDelegate" destination="JOz-Jr-hGG" id="zVs-b6-w9B"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -970,7 +986,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="u4t-XT-JbO"/>
+        <segue reference="o4j-Kc-GBw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2209449124072663" green="0.3942933058375635" blue="0.089073192866467144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
