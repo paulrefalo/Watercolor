@@ -125,7 +125,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
 
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<Paint>(entityName: "Paint")
-        let pigmentSort = NSSortDescriptor(key: "paint_name", ascending: true)
+        let pigmentSort = NSSortDescriptor(key: "sort_order", ascending: true)
         request.sortDescriptors = [pigmentSort]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
 
