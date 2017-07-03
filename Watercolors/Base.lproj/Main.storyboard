@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,13 +91,13 @@
                                     <rect key="frame" x="10" y="211" width="355" height="31"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D6f-zT-rr3">
-                                            <rect key="frame" x="0.0" y="0.0" width="144" height="31"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="31"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="3000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Have-Not" translatesAutoresizingMaskIntoConstraints="NO" id="WL9-HT-FpC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="31"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
                                                 </imageView>
                                                 <switch opaque="NO" tag="3010" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rIA-Zx-mBn">
-                                                    <rect key="frame" x="46" y="0.0" width="51" height="31"/>
+                                                    <rect key="frame" x="40" y="0.0" width="51" height="31"/>
                                                     <color key="tintColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="onTintColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
@@ -104,28 +105,28 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXW-oM-Dcp">
-                                                    <rect key="frame" x="105" y="0.0" width="39" height="31"/>
+                                                    <rect key="frame" x="99" y="0.0" width="39" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dKn-yS-O7X">
-                                            <rect key="frame" x="209" y="0.0" width="146" height="31"/>
+                                            <rect key="frame" x="215" y="0.0" width="140" height="31"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="3020" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Need-Not" translatesAutoresizingMaskIntoConstraints="NO" id="y5N-gr-dRR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="31"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
                                                 </imageView>
                                                 <switch opaque="NO" tag="3030" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J0J-UZ-Wen">
-                                                    <rect key="frame" x="46" y="0.0" width="51" height="31"/>
-                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="onTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="40" y="0.0" width="51" height="31"/>
+                                                    <color key="tintColor" red="0.5490196078431373" green="0.011764705882352941" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="onTintColor" red="0.5490196078431373" green="0.011764705882352941" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="needSwitched:" destination="z1q-fL-I86" eventType="valueChanged" id="bPI-hA-E0U"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68L-JB-qsz">
-                                                    <rect key="frame" x="105" y="0.0" width="41" height="31"/>
+                                                    <rect key="frame" x="99" y="0.0" width="41" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -287,7 +288,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJK-Md-KHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="147.5" y="-47.5"/>
+            <point key="canvasLocation" x="147" y="-26"/>
         </scene>
         <!--Pigments-->
         <scene sceneID="7Ed-De-hoO">
@@ -382,55 +383,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
-                            <tableViewSection id="LKw-ZN-xq9">
+                            <tableViewSection id="BAq-FF-ICQ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pigmentNameCell" rowHeight="100" id="luZ-1e-k01">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pigmentNameCell" rowHeight="50" id="luZ-1e-k01">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="luZ-1e-k01" id="pG6-Rd-S9q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="Ifq-6k-NY8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="BcX-oB-Qhe">
-                                                    <rect key="frame" x="50" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="eOQ-iz-bSh">
-                                                    <rect key="frame" x="100" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Fx-6iN">
-                                                    <rect key="frame" x="149" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="non-GJ-xeY">
-                                                    <rect key="frame" x="199" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="1Vt-Gj-5Cv">
-                                                    <rect key="frame" x="245" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PV14-Cobalt Violet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="jc4-Z7-Y7z">
-                                                    <rect key="frame" x="35" y="51" width="250" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="dAc-6D-ST1">
-                                                    <rect key="frame" x="235" y="-7" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PV14-CobaltViolet" translatesAutoresizingMaskIntoConstraints="NO" id="Ifq-6k-NY8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="7uN-Q8-oZh"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ifq-6k-NY8" firstAttribute="top" secondItem="pG6-Rd-S9q" secondAttribute="top" id="XIX-ey-5Df"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ifq-6k-NY8" secondAttribute="trailing" id="kQ7-B8-izb"/>
+                                                <constraint firstItem="Ifq-6k-NY8" firstAttribute="leading" secondItem="pG6-Rd-S9q" secondAttribute="leading" id="u3K-6W-ynj"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell tag="50" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pigmentTypeCell" rowHeight="80" id="uWh-tr-Qh7">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uWh-tr-Qh7" id="dn8-in-0nc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -439,46 +416,46 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FEX-AR-D0X">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="79.5"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3AE-Vw-cdC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="188" height="26.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3AE-Vw-cdC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="26.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pigment Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmR-n5-qJU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="26.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inorganic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cy6-r1-sMa">
-                                                                    <rect key="frame" x="128.5" y="0.0" width="59.5" height="26.5"/>
+                                                                    <rect key="frame" x="171" y="0.0" width="184" height="26.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dpb-gN-FPR">
-                                                            <rect key="frame" x="0.0" y="26.5" width="241.5" height="26.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dpb-gN-FPR">
+                                                            <rect key="frame" x="0.0" y="26.5" width="355" height="26.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btv-3S-p0h">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="26.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cobalt phosphate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DY-xv-9dl">
-                                                                    <rect key="frame" x="128.5" y="0.0" width="113" height="26.5"/>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="cobalt phosphate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DY-xv-9dl">
+                                                                    <rect key="frame" x="171" y="0.0" width="184" height="26.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1ob-wQ-WNp">
-                                                            <rect key="frame" x="0.0" y="53" width="201.5" height="26.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1ob-wQ-WNp">
+                                                            <rect key="frame" x="0.0" y="53" width="355" height="26.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Structure:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4Z-BJ-bl8">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="26.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="166" height="26.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co3(PO4)2" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="eJ2-oP-XfI">
-                                                                    <rect key="frame" x="128.5" y="0.0" width="73" height="26.5"/>
+                                                                    <rect key="frame" x="171" y="0.0" width="184" height="26.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -488,6 +465,12 @@
                                                     <constraints>
                                                         <constraint firstItem="d4Z-BJ-bl8" firstAttribute="width" secondItem="lmR-n5-qJU" secondAttribute="width" id="8s7-Y3-SfS"/>
                                                         <constraint firstItem="btv-3S-p0h" firstAttribute="width" secondItem="lmR-n5-qJU" secondAttribute="width" id="FV2-Ml-WQ3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Dpb-gN-FPR" secondAttribute="trailing" id="NvP-F6-gW5"/>
+                                                        <constraint firstItem="3AE-Vw-cdC" firstAttribute="leading" secondItem="FEX-AR-D0X" secondAttribute="leading" id="bj0-nU-Ym0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3AE-Vw-cdC" secondAttribute="trailing" id="j0t-hi-MKz"/>
+                                                        <constraint firstItem="Dpb-gN-FPR" firstAttribute="leading" secondItem="FEX-AR-D0X" secondAttribute="leading" id="rJG-Xq-lMy"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1ob-wQ-WNp" secondAttribute="trailing" id="tdh-HJ-Tcm"/>
+                                                        <constraint firstItem="1ob-wQ-WNp" firstAttribute="leading" secondItem="FEX-AR-D0X" secondAttribute="leading" id="wRb-DF-lw8"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -499,57 +482,46 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Details" id="BAq-FF-ICQ">
-                                <cells>
-                                    <tableViewCell tag="100" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PropertiesCell" rowHeight="100" id="dk5-nI-QOP">
-                                        <rect key="frame" x="0.0" y="202" width="375" height="100"/>
+                                    <tableViewCell tag="100" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PropertiesCell" rowHeight="100" id="dk5-nI-QOP">
+                                        <rect key="frame" x="0.0" y="130" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dk5-nI-QOP" id="rzx-Sx-qAk">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ije-3P-AHy">
-                                                    <rect key="frame" x="10" y="0.0" width="322" height="99.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Properties" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-3i-ngb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="84" height="24"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="OkR-Tr-U7b"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="J4k-5G-lek">
-                                                            <rect key="frame" x="0.0" y="24" width="322" height="75.5"/>
-                                                            <string key="text">Cobalt Violet is a pure hue that cannot be mixed from other colors. It is cool in its masstone, chemically stable, and semi-opaque. It has a weak tinting strength and is generally offered in a bluish and a reddish-violet shade. </string>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="J4k-5G-lek" secondAttribute="trailing" id="Cgb-nT-nAf"/>
-                                                    </constraints>
-                                                </stackView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="J4k-5G-lek">
+                                                    <rect key="frame" x="8" y="33.5" width="359" height="61"/>
+                                                    <string key="text">Cobalt Violet is a pure hue that cannot be mixed from other colors. It is cool in its masstone, chemically stable, and semi-opaque. It has a weak tinting strength and is generally offered in a bluish and a reddish-violet shade. </string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Properties" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-3i-ngb">
+                                                    <rect key="frame" x="8" y="8" width="359" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ije-3P-AHy" firstAttribute="leading" secondItem="rzx-Sx-qAk" secondAttribute="leading" constant="10" id="19Q-zE-t9X"/>
-                                                <constraint firstItem="Ije-3P-AHy" firstAttribute="top" secondItem="rzx-Sx-qAk" secondAttribute="top" id="RPj-II-1WU"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ije-3P-AHy" secondAttribute="bottom" id="UKF-HP-rHJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ije-3P-AHy" secondAttribute="trailing" constant="10" id="uDz-zE-Gd4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gkk-3i-ngb" secondAttribute="trailing" id="6rZ-pJ-1oZ"/>
+                                                <constraint firstItem="J4k-5G-lek" firstAttribute="width" secondItem="gkk-3i-ngb" secondAttribute="width" id="9dS-lo-6Ib"/>
+                                                <constraint firstItem="gkk-3i-ngb" firstAttribute="top" secondItem="rzx-Sx-qAk" secondAttribute="topMargin" id="9mR-qh-tQJ"/>
+                                                <constraint firstItem="gkk-3i-ngb" firstAttribute="leading" secondItem="rzx-Sx-qAk" secondAttribute="leadingMargin" id="HIS-ST-SzR"/>
+                                                <constraint firstAttribute="bottom" secondItem="J4k-5G-lek" secondAttribute="bottom" constant="5" id="Ksr-LL-4aI"/>
+                                                <constraint firstItem="J4k-5G-lek" firstAttribute="centerX" secondItem="gkk-3i-ngb" secondAttribute="centerX" id="NrH-Lz-dYa"/>
+                                                <constraint firstItem="J4k-5G-lek" firstAttribute="top" secondItem="gkk-3i-ngb" secondAttribute="bottom" constant="5" id="X6j-uG-g3S"/>
+                                                <constraint firstItem="gkk-3i-ngb" firstAttribute="leading" secondItem="rzx-Sx-qAk" secondAttribute="leadingMargin" id="sbw-dZ-7f8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="200" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PermanenceCell" rowHeight="80" id="htY-mo-gQf">
-                                        <rect key="frame" x="0.0" y="302" width="375" height="80"/>
+                                    <tableViewCell tag="200" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PermanenceCell" rowHeight="80" id="htY-mo-gQf">
+                                        <rect key="frame" x="0.0" y="230" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="htY-mo-gQf" id="BIV-Fe-9yP">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7XT-iL-Vge">
-                                                    <rect key="frame" x="10" y="0.0" width="322" height="79.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="69.5"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Permanance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuO-xl-nVi">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="24"/>
@@ -560,7 +532,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="jCC-OZ-h5y">
-                                                            <rect key="frame" x="0.0" y="24" width="321.5" height="55.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="354.5" height="45.5"/>
                                                             <string key="text">Cobalt Violet has excellent permanence, and its lightfastness makes it more desirable than older organic dye violets.	</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
@@ -573,22 +545,22 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7XT-iL-Vge" firstAttribute="top" secondItem="BIV-Fe-9yP" secondAttribute="top" id="7vZ-hP-uaX"/>
-                                                <constraint firstAttribute="bottom" secondItem="7XT-iL-Vge" secondAttribute="bottom" id="JmN-hi-7W9"/>
+                                                <constraint firstItem="7XT-iL-Vge" firstAttribute="top" secondItem="BIV-Fe-9yP" secondAttribute="top" constant="5" id="7vZ-hP-uaX"/>
+                                                <constraint firstAttribute="bottom" secondItem="7XT-iL-Vge" secondAttribute="bottom" constant="5" id="JmN-hi-7W9"/>
                                                 <constraint firstItem="7XT-iL-Vge" firstAttribute="leading" secondItem="BIV-Fe-9yP" secondAttribute="leading" constant="10" id="TPW-Qu-FZu"/>
                                                 <constraint firstAttribute="trailing" secondItem="7XT-iL-Vge" secondAttribute="trailing" constant="10" id="yTg-4t-wXu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="300" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToxicityCell" rowHeight="80" id="joD-BL-PTT">
-                                        <rect key="frame" x="0.0" y="382" width="375" height="80"/>
+                                    <tableViewCell tag="300" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToxicityCell" rowHeight="80" id="joD-BL-PTT">
+                                        <rect key="frame" x="0.0" y="310" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="joD-BL-PTT" id="vtb-eI-OyW">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cc0-tY-uUj">
-                                                    <rect key="frame" x="10" y="0.0" width="322" height="79.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="69.5"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toxicity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-EK-Rqk">
                                                             <rect key="frame" x="0.0" y="0.0" width="62" height="24"/>
@@ -599,7 +571,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="Dxu-Ew-K4K">
-                                                            <rect key="frame" x="0.0" y="24" width="322" height="55.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="355" height="45.5"/>
                                                             <string key="text">Cobalt Violet is highly toxic by both ingestion and inhalation, particularly in dry pigment form. However, much of the material presently used to make paints of this color is non-toxic cobalt phosphate.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
@@ -613,21 +585,21 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="cc0-tY-uUj" secondAttribute="trailing" constant="10" id="BY7-fL-MoP"/>
-                                                <constraint firstAttribute="bottom" secondItem="cc0-tY-uUj" secondAttribute="bottom" id="EBA-KG-8NI"/>
-                                                <constraint firstItem="cc0-tY-uUj" firstAttribute="top" secondItem="vtb-eI-OyW" secondAttribute="top" id="l5j-td-NUh"/>
+                                                <constraint firstAttribute="bottom" secondItem="cc0-tY-uUj" secondAttribute="bottom" constant="5" id="EBA-KG-8NI"/>
+                                                <constraint firstItem="cc0-tY-uUj" firstAttribute="top" secondItem="vtb-eI-OyW" secondAttribute="top" constant="5" id="l5j-td-NUh"/>
                                                 <constraint firstItem="cc0-tY-uUj" firstAttribute="leading" secondItem="vtb-eI-OyW" secondAttribute="leading" constant="10" id="oWA-Kt-PFn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="400" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" rowHeight="80" id="Kkb-cc-RaP">
-                                        <rect key="frame" x="0.0" y="462" width="375" height="80"/>
+                                    <tableViewCell tag="400" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" rowHeight="80" id="Kkb-cc-RaP">
+                                        <rect key="frame" x="0.0" y="390" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kkb-cc-RaP" id="5Wn-um-jb6">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-d3-ckV">
-                                                    <rect key="frame" x="10" y="0.0" width="322" height="79.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="69.5"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1i-g7-cJT">
                                                             <rect key="frame" x="0.0" y="0.0" width="58.5" height="24"/>
@@ -638,7 +610,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="djh-h4-tLQ">
-                                                            <rect key="frame" x="0.0" y="24" width="322" height="55.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="355" height="45.5"/>
                                                             <string key="text">Cobalt comes from the Middle High German word kobolt, an underground goblin, because miners thought cobalt harmed silver ores. Cobalt Violet was the first real violet pigment and was described by Salvetat in 1859. The light variety of this pigment, developed in Germany earlier in the 19th century, was particularly poisonous due to its arsenic content. Cobalt Violet hues were the only permanent bright violets available to artists until the 1950s.	</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
@@ -651,25 +623,25 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="H1X-d3-ckV" secondAttribute="bottom" id="6c6-uz-W3k"/>
+                                                <constraint firstAttribute="bottom" secondItem="H1X-d3-ckV" secondAttribute="bottom" constant="5" id="6c6-uz-W3k"/>
                                                 <constraint firstItem="H1X-d3-ckV" firstAttribute="leading" secondItem="5Wn-um-jb6" secondAttribute="leading" constant="10" id="Cj8-9A-gtb"/>
-                                                <constraint firstItem="H1X-d3-ckV" firstAttribute="top" secondItem="5Wn-um-jb6" secondAttribute="top" id="q1m-Aj-1xO"/>
+                                                <constraint firstItem="H1X-d3-ckV" firstAttribute="top" secondItem="5Wn-um-jb6" secondAttribute="top" constant="5" id="q1m-Aj-1xO"/>
                                                 <constraint firstAttribute="trailing" secondItem="H1X-d3-ckV" secondAttribute="trailing" constant="10" id="vhU-bN-HJ6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="500" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AltNamesCell" rowHeight="80" id="UGD-Vx-glI">
-                                        <rect key="frame" x="0.0" y="542" width="375" height="80"/>
+                                    <tableViewCell tag="500" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AltNamesCell" rowHeight="80" id="UGD-Vx-glI">
+                                        <rect key="frame" x="0.0" y="470" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UGD-Vx-glI" id="Faa-RC-5aT">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Efu-xZ-cJv">
-                                                    <rect key="frame" x="10" y="0.0" width="322" height="79.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="69.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alternative Names" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8u-Tb-BWC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="147" height="24"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paint Names" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8u-Tb-BWC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100.5" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="Rgu-cl-m1G"/>
                                                             </constraints>
@@ -677,7 +649,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="jk7-BE-JBR">
-                                                            <rect key="frame" x="0.0" y="24" width="322" height="55.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="355" height="45.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -691,8 +663,8 @@
                                             <constraints>
                                                 <constraint firstItem="Efu-xZ-cJv" firstAttribute="leading" secondItem="Faa-RC-5aT" secondAttribute="leading" constant="10" id="9iZ-7J-Brz"/>
                                                 <constraint firstAttribute="trailing" secondItem="Efu-xZ-cJv" secondAttribute="trailing" constant="10" id="DWC-Fv-Tz2"/>
-                                                <constraint firstItem="Efu-xZ-cJv" firstAttribute="top" secondItem="Faa-RC-5aT" secondAttribute="top" id="Vc8-Fl-bMu"/>
-                                                <constraint firstAttribute="bottom" secondItem="Efu-xZ-cJv" secondAttribute="bottom" id="zSD-8Y-h7X"/>
+                                                <constraint firstItem="Efu-xZ-cJv" firstAttribute="top" secondItem="Faa-RC-5aT" secondAttribute="top" constant="5" id="Vc8-Fl-bMu"/>
+                                                <constraint firstAttribute="bottom" secondItem="Efu-xZ-cJv" secondAttribute="bottom" constant="5" id="zSD-8Y-h7X"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -713,13 +685,6 @@
                         <outlet property="HistoryLabel" destination="djh-h4-tLQ" id="mse-mJ-zI1"/>
                         <outlet property="PermanenceLabel" destination="jCC-OZ-h5y" id="Yp1-vX-BMD"/>
                         <outlet property="PigmentImageView" destination="Ifq-6k-NY8" id="R76-BZ-Akg"/>
-                        <outlet property="PigmentImageView2" destination="BcX-oB-Qhe" id="F2n-vd-Wjd"/>
-                        <outlet property="PigmentImageView3" destination="eOQ-iz-bSh" id="WnA-Ov-Dgx"/>
-                        <outlet property="PigmentImageView4" destination="Fpy-Fx-6iN" id="eHF-34-gGe"/>
-                        <outlet property="PigmentImageView5" destination="non-GJ-xeY" id="A1C-Zj-KSV"/>
-                        <outlet property="PigmentImageView6" destination="1Vt-Gj-5Cv" id="06f-lm-9pb"/>
-                        <outlet property="PigmentImageView7" destination="dAc-6D-ST1" id="PnV-DH-AEV"/>
-                        <outlet property="PigmentNameLabel" destination="jc4-Z7-Y7z" id="hgC-QU-7Va"/>
                         <outlet property="PigmentTypeLabel" destination="cy6-r1-sMa" id="aRS-Wg-s1G"/>
                         <outlet property="PropertiesLabel" destination="J4k-5G-lek" id="qlj-1Y-lI6"/>
                         <outlet property="ToxicityLabel" destination="Dxu-Ew-K4K" id="EYT-IA-4Wl"/>
@@ -802,7 +767,7 @@
                             <outlet property="delegate" destination="YrS-NL-QDJ" id="9kE-x9-JH2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="t8T-qM-5WP">
+                    <navigationItem key="navigationItem" title="Watercolors" id="t8T-qM-5WP">
                         <barButtonItem key="rightBarButtonItem" image="gear" id="JWg-Mc-3Kj">
                             <connections>
                                 <action selector="displayLoginVCmodally:" destination="YrS-NL-QDJ" id="X9h-qy-e1v"/>
@@ -816,7 +781,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZN-Ae-u3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-666.5" y="-24.5"/>
+            <point key="canvasLocation" x="-582" y="-25"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="NSZ-yo-TsN">
@@ -896,11 +861,11 @@
             </objects>
             <point key="canvasLocation" x="-1884" y="332"/>
         </scene>
-        <!--Paints-->
+        <!--Watercolors-->
         <scene sceneID="Vou-OH-nAG">
             <objects>
                 <navigationController storyboardIdentifier="Paint NavBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qaN-zu-vfx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Paints" image="Tab-Paint" id="22h-wI-kvN"/>
+                    <tabBarItem key="tabBarItem" title="Watercolors" image="Tab-Paint" id="22h-wI-kvN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gTo-Kp-q1w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -938,9 +903,9 @@
     <resources>
         <image name="10" width="600" height="300"/>
         <image name="174" width="600" height="300"/>
-        <image name="Have-Not" width="36" height="36"/>
-        <image name="Need-Not" width="36" height="36"/>
-        <image name="PB15-3-PhthaloBlue" width="50" height="50"/>
+        <image name="Have-Not" width="30" height="30"/>
+        <image name="Need-Not" width="30" height="30"/>
+        <image name="PB15-3-PhthaloBlue" width="300" height="100"/>
         <image name="PV14-CobaltViolet" width="50" height="50"/>
         <image name="Tab-Paint" width="25" height="25"/>
         <image name="Tab-Pigment" width="25" height="25"/>
