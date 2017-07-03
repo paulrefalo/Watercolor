@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
-        coreDataStack?.autoSave(60)
+        // coreDataStack.autoSave(60)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -50,6 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         importJSONSeedDataIfNeeded()
+        
+        // Get sql db path
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print("******  Here is the sqlite db ********")
+        print(urls[urls.count-1] as URL)
+        print("**************************************")
 
         return true
     }
@@ -62,19 +68,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        coreDataStack?.save()
+        coreDataStack.saveContext()
     }
 
     func importJSONSeedDataIfNeeded() {
 
         let fetchRequest = NSFetchRequest<Paint>(entityName: "Paint")
-        let count = try! coreDataStack?.managedContext.count(for: fetchRequest)
+        let count = try! coreDataStack.managedContext.count(for: fetchRequest)
 
         print("paint count:" , count as Any)
 
 
         let fetchRequest2 = NSFetchRequest<Pigment>(entityName: "Pigment")
-        let count2 = try! coreDataStack?.managedContext.count(for: fetchRequest2)
+        let count2 = try! coreDataStack.managedContext.count(for: fetchRequest2)
 
         print("pigment count: ", count2 as Any)
 
@@ -82,10 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard count == 0 else { return }
 
         do {
-            let results = try coreDataStack?.managedContext.fetch(fetchRequest)
-            results?.forEach({ coreDataStack?.managedContext.delete($0) })
+            let results = try coreDataStack.managedContext.fetch(fetchRequest)
+            results.forEach({ coreDataStack.managedContext.delete($0) })
 
-            coreDataStack?.save()
+            coreDataStack.saveContext()
             importJSONSeedData()
         } catch let error as NSError {
             print("Error fetching: \(error), \(error.userInfo)")
@@ -115,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let chemical_formula = pigmentJsonDictionary["chemical_formula"] as? String ?? ""
             let alternative_names = pigmentJsonDictionary["alternative_names"] as? String ?? ""
 
-            let pigment = Pigment.pigment(withName: pigment_name, in: (coreDataStack?.managedContext)!)
+            let pigment = Pigment.pigment(withName: pigment_name, in: (coreDataStack.managedContext))
 
             pigment.toxicity = toxicity
             pigment.properties = properties
@@ -153,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let have = paintJsonDictionary["have"] as? Bool ?? false
             let color_family = paintJsonDictionary["color_family"] as? String ?? ""
 
-            let paint = Paint.paint(withName: paint_name, in: (coreDataStack?.managedContext)!)
+            let paint = Paint.paint(withName: paint_name, in: (coreDataStack.managedContext))
 
             paint.temperature = temperature
             paint.staining_granulating = staining_granulating
@@ -174,12 +180,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let pigmentArray: [String]? = pigments.components(separatedBy: ",")
             for pigmentStr in pigmentArray! {
 
-                let aPigment = Pigment.pigment(withName: pigmentStr, in: (coreDataStack?.managedContext)!)
+                let aPigment = Pigment.pigment(withName: pigmentStr, in: (coreDataStack.managedContext))
                 paint.addToContains(aPigment)
 
             }
         }
 
-        coreDataStack?.save()
+        coreDataStack.saveContext()
     } // end func importJSONSeedData
 }

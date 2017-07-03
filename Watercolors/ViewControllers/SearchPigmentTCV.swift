@@ -39,7 +39,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         super.viewDidLoad()
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        managedContext = appDelegate.coreDataStack?.managedContext
+        managedContext = appDelegate.coreDataStack.managedContext
         self.initializeFetchedResultsController()
     }
 

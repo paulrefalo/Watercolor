@@ -23,7 +23,7 @@
 import Foundation
 import CoreData
 
-
+/*
 // MARK: - CoreDataStack
 
 struct CoreDataStack {
@@ -31,6 +31,7 @@ struct CoreDataStack {
     // MARK: Properties
     
     private let model: NSManagedObjectModel
+    private let modelName: String = "Watercolors"
     internal let coordinator: NSPersistentStoreCoordinator
     private let modelURL: URL
     internal let dbURL: URL
@@ -66,6 +67,7 @@ struct CoreDataStack {
         
         managedContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedContext.parent = persistingContext
+        
         
         // Create a background context child of main context
         backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -143,11 +145,14 @@ extension CoreDataStack {
         // when it ends so we can call the next save (on the persisting
         // context). This last one might take some time and is done
         // in a background queue
+        
+        print("save in CoreDataStack called")
         managedContext.performAndWait() {
             
             if self.managedContext.hasChanges {
                 do {
                     try self.managedContext.save()
+                    print("managedContext saved")
                 } catch {
                     fatalError("Error while saving main context: \(error)")
                 }
@@ -156,6 +161,7 @@ extension CoreDataStack {
                 self.persistingContext.perform() {
                     do {
                         try self.persistingContext.save()
+                        print("persistingContext saved")
                     } catch {
                         fatalError("Error while saving persisting context: \(error)")
                     }
@@ -183,41 +189,44 @@ extension CoreDataStack {
         }
     }
 }
+ 
+ */
 
-/*
+
 class CoreDataStack {
-
-  private let modelName: String
     
-
-  init(modelName: String) {
-    self.modelName = modelName
-  }
-
-  lazy var managedContext: NSManagedObjectContext = {
-    return self.storeContainer.viewContext
-  }()
-
-  private lazy var storeContainer: NSPersistentContainer = {
+    private let modelName: String
     
-    let container = NSPersistentContainer(name: self.modelName)
-    container.loadPersistentStores { (storeDescription, error) in
-      if let error = error as NSError? {
-        print("Unresolved error \(error), \(error.userInfo)")
-      }
+    
+    init(modelName: String) {
+        self.modelName = modelName
     }
-    return container
-  }()
-  
-  func saveContext () {
-    guard managedContext.hasChanges else { return }
-
-    do {
-      try managedContext.save()
-    } catch {
-      let nserror = error as NSError
-      print("Unresolved error \(nserror), \(nserror.userInfo)")
+    
+    lazy var managedContext: NSManagedObjectContext = {
+        return self.storeContainer.viewContext
+    }()
+    
+    private lazy var storeContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: self.modelName)
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
+    
+    func saveContext () {
+        guard managedContext.hasChanges else { return }
+        
+        do {
+            try managedContext.save()
+            print("  ***  managedContext saved from CDS")
+        } catch {
+            let nserror = error as NSError
+            print("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
-  }
 }
-*/
+

@@ -46,7 +46,7 @@ class PaintInfoTVC: UITableViewController {
         super.viewDidLoad()
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        managedContext = appDelegate.coreDataStack?.managedContext
+        managedContext = appDelegate.coreDataStack.managedContext
 
         // setup the view portion of the screen
         let paintImageName = String(currentPaint.paint_number)
@@ -177,18 +177,25 @@ class PaintInfoTVC: UITableViewController {
         if haveSwitch.isOn {
             currentPaint.have = true
             haveImage.image = UIImage(named: "Have")
-
+            print("Paint switched to have:  \(String(describing: currentPaint.paint_number))")
         } else {
             currentPaint.have = false
             haveImage.image = UIImage(named: "Have-Not")
 
         }
         do {
-            try managedContext.save()
+            if managedContext.hasChanges {
+                print("ManagedContext has Changes ***********")
+                try managedContext.save()
+            }
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+        
+        
+        
     }
+    
 
     @IBAction func needSwitched(_ sender: Any) {
 
@@ -201,6 +208,7 @@ class PaintInfoTVC: UITableViewController {
             needImage.image = UIImage(named: "Need-Not")
 
         }
+        
         do {
             try managedContext.save()
         } catch {

@@ -30,7 +30,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         super.viewDidLoad()
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        managedContext = appDelegate.coreDataStack?.managedContext
+        managedContext = appDelegate.coreDataStack.managedContext
         self.initializeFetchedResultsController()
     }
 
@@ -159,6 +159,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         
         print("*** From VC Successfully logged in with facebook...")
     }
+    
     @IBAction func statusChanged(_ sender: Any) {
 
         switch (inventorySegmentedControl.selectedSegmentIndex) {
