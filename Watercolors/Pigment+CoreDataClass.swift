@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 public class Pigment: NSManagedObject {
 
     // get a pigment with the given name. creates if DNE

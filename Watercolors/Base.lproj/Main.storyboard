@@ -363,10 +363,17 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Pigments" id="G7p-UD-UrN"/>
+                    <navigationItem key="navigationItem" title="Pigments" id="G7p-UD-UrN">
+                        <barButtonItem key="rightBarButtonItem" image="gear" id="QzX-FT-Uok">
+                            <connections>
+                                <action selector="displayLoginVCModally:" destination="JOz-Jr-hGG" id="vJg-oQ-KZY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="Z1U-Kt-SMf" id="whF-nw-pui"/>
                         <outlet property="searchDisplayController" destination="u1i-wP-ZSZ" id="p53-oY-KUZ"/>
+                        <outlet property="settingsButton" destination="QzX-FT-Uok" id="yif-9h-Uyi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fvx-EY-TLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -828,22 +835,10 @@
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9v-1s-14w" userLabel="coverView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cu6-Hd-Kcw">
-                                <rect key="frame" x="163.5" y="575" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.23475726299694188" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Skip">
-                                    <color key="titleColor" red="0.0" green="0.41960784309999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonPressed:" destination="ahC-BB-bBE" eventType="touchUpInside" id="kT3-jR-vme"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLl-CP-aVM">
-                                <rect key="frame" x="78.5" y="120" width="219" height="60"/>
+                                <rect key="frame" x="78" y="120" width="219" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Rga-3Y-NRp"/>
                                 </constraints>
@@ -852,27 +847,59 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login with Facebook to store your inventory safely in the cloud" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKB-Bd-sVU">
+                                <rect key="frame" x="16" y="503" width="343" height="59"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="QkI-iX-ppD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cu6-Hd-Kcw">
+                                <rect key="frame" x="137" y="577" width="100" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="jkL-9F-gq2"/>
+                                    <constraint firstAttribute="width" constant="100" id="voM-sy-gLp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="0.0" green="0.41960784309999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="ahC-BB-bBE" eventType="touchUpInside" id="kT3-jR-vme"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wLl-CP-aVM" firstAttribute="top" secondItem="lya-r5-uHC" secondAttribute="bottom" constant="100" id="2Ad-mw-IWU"/>
                             <constraint firstItem="fQy-cw-xSZ" firstAttribute="top" secondItem="w9v-1s-14w" secondAttribute="bottom" id="9eB-7q-EZD"/>
                             <constraint firstAttribute="trailing" secondItem="w9v-1s-14w" secondAttribute="trailing" id="ALu-0c-kyF"/>
+                            <constraint firstItem="Cu6-Hd-Kcw" firstAttribute="centerX" secondItem="o7E-aI-m9n" secondAttribute="centerX" id="L07-jA-wFs"/>
+                            <constraint firstItem="PKB-Bd-sVU" firstAttribute="centerX" secondItem="w9v-1s-14w" secondAttribute="centerX" id="NLy-Wx-rPT"/>
+                            <constraint firstItem="Cu6-Hd-Kcw" firstAttribute="top" secondItem="PKB-Bd-sVU" secondAttribute="bottom" constant="15" id="PvW-qb-SRq"/>
                             <constraint firstItem="w9v-1s-14w" firstAttribute="leading" secondItem="o7E-aI-m9n" secondAttribute="leading" id="T9u-fV-k96"/>
                             <constraint firstItem="wLl-CP-aVM" firstAttribute="centerX" secondItem="o7E-aI-m9n" secondAttribute="centerX" id="Uya-p2-Cx0"/>
+                            <constraint firstItem="fQy-cw-xSZ" firstAttribute="top" secondItem="Cu6-Hd-Kcw" secondAttribute="bottom" constant="55" id="eNc-5q-rDF"/>
                             <constraint firstItem="w9v-1s-14w" firstAttribute="top" secondItem="o7E-aI-m9n" secondAttribute="top" id="gtt-oP-fgx"/>
+                            <constraint firstItem="PKB-Bd-sVU" firstAttribute="leading" secondItem="o7E-aI-m9n" secondAttribute="leadingMargin" id="nLF-2D-Qrc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Cu6-Hd-Kcw" id="Bjc-8t-ipv"/>
                         <outlet property="coverView" destination="w9v-1s-14w" id="Oel-JD-9J4"/>
+                        <outlet property="loginText" destination="PKB-Bd-sVU" id="dyU-jk-WOc"/>
                         <outlet property="mainView" destination="o7E-aI-m9n" id="LKk-iR-gkb"/>
                         <outlet property="topLabel" destination="wLl-CP-aVM" id="mxE-R9-bN7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y7o-qe-rTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1885" y="-509"/>
+            <point key="canvasLocation" x="-1885.5" y="-509.5"/>
         </scene>
         <!--Tab Bar-->
         <scene sceneID="MJI-lV-yPM">

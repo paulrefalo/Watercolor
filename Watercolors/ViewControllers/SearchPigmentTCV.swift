@@ -21,8 +21,10 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
     // MARK: - IBOutlets
 
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
 
     //Mark: - CoreData
+    
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<Pigment>(entityName: "Pigment")
         let pigmentSort = NSSortDescriptor(key: "pigment_name", ascending: true)
@@ -50,19 +52,12 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         self.initializeFetchedResultsController()
         searchBar.delegate = self
 
-
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
        // self.extendedLayoutIncludesOpaqueBars = !self.navigationController!.navigationBar.isTranslucent
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -80,7 +75,6 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         cell.nameLabelOutlet.text = this_pigment.pigment_words
         cell.pigmentOutlet.text = this_pigment.pigment_code
         cell.chemicalNameOutlet.text = this_pigment.chemical_name
-
 
         //Populate the cell from the object
         return cell
@@ -102,16 +96,15 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         return 80.0
     }
 
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
         print("prepareForSeque to Pigment Info View")
-
 
         if let indexPath = self.tableView.indexPathForSelectedRow {
 
@@ -124,8 +117,13 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
             let this_pigment = object as Pigment
             dvc?.currentPigment = this_pigment
         }
+    }
 
+    // MARK: - Actions
 
+    @IBAction func displayLoginVCModally(_ sender: Any) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            self.present(vc, animated: true, completion: nil)
     }
 
     //Search Functionality

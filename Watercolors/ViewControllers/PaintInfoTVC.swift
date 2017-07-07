@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseCore
+
 class PaintInfoTVC: UITableViewController {
 
     // MARK: - Properties
@@ -15,6 +19,9 @@ class PaintInfoTVC: UITableViewController {
     var currentPaint: Paint!
     var pigments:[Pigment] = []
     var managedContext: NSManagedObjectContext!
+    let ref = FIRDatabase.database().reference(withPath: "Watercolors")
+    var userID: String = ""
+
 
     // Cell Identifiers
 
@@ -23,7 +30,6 @@ class PaintInfoTVC: UITableViewController {
     let otherNamesCellIdentifier = "OtherNamesCell"
 
     let estimatedCellHeight: CGFloat = 80
-
 
     // MARK: - IBOutlets
 
@@ -44,19 +50,22 @@ class PaintInfoTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = estimatedCellHeight;
 
         tableView.delegate = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
 
         self.title = String(currentPaint.paint_number)
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedContext = appDelegate.coreDataStack.managedContext
-
+        
+        userID = (FIRAuth.auth()?.currentUser?.uid)!
+    
         // setup the view portion of the screen
         let paintImageName = String(currentPaint.paint_number)
         paintSwatchImage.image = UIImage(named: paintImageName)
@@ -69,7 +78,18 @@ class PaintInfoTVC: UITableViewController {
         if currentPaint.have == true {
             haveImage.image = UIImage(named: "Have")
             haveSwitch.setOn(true, animated: false)
+                        
+            let paintItem = PaintItem(paintNumber: "testPaintNumber2", havePaint: 1, needPaint: 0)
+            let timeInterval = floorf(Float(Date().timeIntervalSince1970))
 
+            
+            let watercolorsItemRef = self.ref.child(paintItem.paintNumber.lowercased())
+            watercolorsItemRef.setValue(paintItem.toAnyObject())
+            
+            let timeRef = self.ref.child("time")
+            timeRef.setValue(timeInterval)
+
+            
         } else {
             haveImage.image = UIImage(named: "Have-Not")
             haveSwitch.setOn(false, animated: false)
@@ -85,30 +105,20 @@ class PaintInfoTVC: UITableViewController {
         }
 
         pigments = currentPaint.contains?.allObjects as! [Pigment]
-
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         if section == 0 {
             return pigments.count
         } else {
             return 1
         }
-
     }
 
 
@@ -117,9 +127,7 @@ class PaintInfoTVC: UITableViewController {
         // Configure the cell...
         if indexPath.section == 0 {
 
-
             let cell: PigmentTableViewCell = (tableView.dequeueReusableCell(withIdentifier: pigementCellIdentifier)! as? PigmentTableViewCell)!
-
 
             let thisPigment = pigments[indexPath.row]
 
@@ -133,7 +141,6 @@ class PaintInfoTVC: UITableViewController {
             cell.nameLabelOutlet.text = thisPigment.pigment_words
             cell.pigmentOutlet.text = thisPigment.pigment_code
             cell.chemicalNameOutlet.text = thisPigment.chemical_name
-
 
             return cell
 
@@ -149,7 +156,6 @@ class PaintInfoTVC: UITableViewController {
             cell.otherNameLabel.text = otherNamesText
             return cell
         }
-
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -160,6 +166,7 @@ class PaintInfoTVC: UITableViewController {
 
         return UITableViewAutomaticDimension
     }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 35
     }
@@ -177,51 +184,78 @@ class PaintInfoTVC: UITableViewController {
         }
     }
 
-
     @IBAction func haveSwitched(_ sender: Any) {
+        
+        let paintNumber = currentPaint.paint_number
+        let paintNumberString = "\(paintNumber)"
+        let paintHaveRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("havePaint")
 
         if haveSwitch.isOn {
             currentPaint.have = true
             haveImage.image = UIImage(named: "Have")
-            print("Paint switched to have:  \(String(describing: currentPaint.paint_number))")
+            
+            // Update Firebase to keep in sync and in the cloud
+            paintHaveRef.setValue(1)
+            
         } else {
             currentPaint.have = false
             haveImage.image = UIImage(named: "Have-Not")
 
+            // Update Firebase to keep in sync and in the cloud
+            paintHaveRef.setValue(0)
         }
         do {
             if managedContext.hasChanges {
                 print("ManagedContext has Changes ***********")
                 try managedContext.save()
+                setTimeOfLastSync(userID: userID)
             }
         } catch {
             fatalError("Failure to save context: \(error)")
         }
         
-        
-        
     }
     
 
     @IBAction func needSwitched(_ sender: Any) {
+        
+        let paintNumber = currentPaint.paint_number
+        let paintNumberString = "\(paintNumber)"
+        let paintNeedRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("needPaint")
 
         if needSwitch.isOn {
             currentPaint.need = true
             needImage.image = UIImage(named: "Need")
-
+            
+            // Update Firebase to keep in sync and in the cloud
+            paintNeedRef.setValue(1)
         } else {
             currentPaint.need = false
             needImage.image = UIImage(named: "Need-Not")
-
+            
+            // Update Firebase to keep in sync and in the cloud
+            paintNeedRef.setValue(0)
         }
         
         do {
-            try managedContext.save()
+            if managedContext.hasChanges {
+                print("ManagedContext has Changes ***********")
+                try managedContext.save()
+                setTimeOfLastSync(userID: userID)
+            }
         } catch {
             fatalError("Failure to save context: \(error)")
         }
     }
-
+    
+    func setTimeOfLastSync(userID: String) {
+        // set time in Firebase and UserDefaults.standard.set(time, forKey: "timeOfLastSync")
+        let timeSinceEpoch = Int(Date().timeIntervalSince1970)
+        print("Time: \(timeSinceEpoch)")
+        let timeRef = self.ref.child(userID).ref.child("Time of Sync")
+        timeRef.setValue(timeSinceEpoch)
+        UserDefaults.standard.set(timeSinceEpoch, forKey: "timeOfLastSync")
+    }
 
     // MARK: - Navigation
 
@@ -236,6 +270,5 @@ class PaintInfoTVC: UITableViewController {
             dvc?.currentPigment = this_pigment
         }
     }
-    
     
 }

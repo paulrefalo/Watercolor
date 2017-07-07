@@ -17,7 +17,6 @@ class PigmentInfoTVC: UITableViewController {
     let estimatedCellHeight: CGFloat = 150
     var paints:[Paint] = []
 
-
     // MARK: - IBOutlets
 
     @IBOutlet var pigmentImageView: UIImageView!
@@ -30,6 +29,7 @@ class PigmentInfoTVC: UITableViewController {
     @IBOutlet var historyLabel: UILabel!
     @IBOutlet var altNamesLabel: UILabel!
     @IBOutlet var pigmentTitleLabel: UILabel!
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -40,6 +40,7 @@ class PigmentInfoTVC: UITableViewController {
 
         tableView.delegate = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
 
 
@@ -53,10 +54,8 @@ class PigmentInfoTVC: UITableViewController {
         toxicityLabel.text = currentPigment.toxicity
         historyLabel.text = currentPigment.history
 
-
-        //TODO: better way to get names???
+        // get paint names
         paints = currentPigment.used_in?.allObjects as! [Paint]
-
 
         for paint in paints {
             let theName = paint.paint_name
@@ -72,11 +71,7 @@ class PigmentInfoTVC: UITableViewController {
 
         pigmentImageView.image = UIImage(named: pigmentImageName)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.layoutIfNeeded()

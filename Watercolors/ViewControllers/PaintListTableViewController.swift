@@ -9,21 +9,21 @@
 import UIKit
 import CoreData
 import FBSDKLoginKit
+import FirebaseDatabase
 
 class PaintListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate  {
 
     // MARK: - Properties
     var managedContext: NSManagedObjectContext!
-
     var fetchedResultsController : NSFetchedResultsController<Paint>!
     var searchResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     var searchPredicate: NSCompoundPredicate?
-    var inventoryPredicate:NSPredicate?
-
-    @IBOutlet var inventorySegmentedControl: UISegmentedControl!
+    var inventoryPredicate: NSPredicate?
+    let ref = FIRDatabase.database().reference(withPath: "Watercolors")
 
     // MARK: - IBOutlets
 
+    @IBOutlet var inventorySegmentedControl: UISegmentedControl!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet var searchBar: UISearchBar!
 
@@ -35,10 +35,10 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         self.initializeFetchedResultsController()
         searchBar.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -77,8 +77,6 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
             cell.transparentOutlet.text = comboStr
         }
 
-
-
         return cell
     }
 
@@ -107,8 +105,6 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         print("prepareForSeque to PaintView")
-
-
         if let indexPath = self.tableView.indexPathForSelectedRow {
 
             let dvc: PaintInfoTVC? = (segue.destination as? PaintInfoTVC)
@@ -122,7 +118,6 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         }
 
     }
-
 
     // MARK: - coredata
 
@@ -173,7 +168,6 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
             print(error)
             return
         }
-
         print("*** From VC Successfully logged in with facebook...")
     }
 
@@ -184,10 +178,8 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
             inventoryPredicate = nil
             break
         case 1:
-
             let haveValue = true
             inventoryPredicate = NSPredicate(format: "have == %@", haveValue as CVarArg)
-
             break
         case 2:
             let haveValue = false
@@ -205,10 +197,9 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         tableView.reloadData()
     }
 
-
-    //Search Functionality
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
-    {
+    // Search Functionality
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty  {
 
             let predicate1 = NSPredicate(format: "paint_name contains [cd] %@", searchText)
@@ -220,7 +211,6 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
             let predicate7 = NSPredicate(format: "color_family contains [cd] %@", searchText)
             
             searchPredicate = NSCompoundPredicate(orPredicateWithSubpredicates:[predicate1, predicate2, predicate3, predicate4, predicate5, predicate6, predicate7])
-            
             
         } else {
             searchPredicate = nil

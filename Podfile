@@ -13,6 +13,7 @@ pod 'FBSDKLoginKit'
 
 pod ‘Firebase/Core’
 pod ‘Firebase/Auth’
+pod 'Firebase/Database'
 
   target 'WatercolorsTests' do
     inherit! :search_paths

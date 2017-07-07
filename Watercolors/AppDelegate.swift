@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import Firebase
+import FirebaseDatabase
 import CoreData
 
 @UIApplicationMain
@@ -16,22 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack(modelName: "Watercolors")
+    
+    override init() {
+        super.init()
+        FIRApp.configure()                                  // configure Firebase db
+        FIRDatabase.database().persistenceEnabled = true    // enables offline Firebase updates
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
-        // coreDataStack.autoSave(60)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
-        
-        //test line to force skip loginVC
-//        UserDefaults.standard.set("Leisa", forKey: "name")
-//        UserDefaults.standard.set(nil, forKey: "name")
-        
-//        if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
         
         print("Current ID", FBSDKAccessToken.current())
         if (FBSDKAccessToken.current() == nil) {
@@ -41,22 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Already logged into FB so -> show main screen
             vc = storyboard.instantiateInitialViewController()!
         }
-        
-     
+
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
-
-        
-        FIRApp.configure()
 
         importJSONSeedDataIfNeeded()
         
         // Get sql db path
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print("******  Here is the sqlite db ********")
-        print(urls[urls.count-1] as URL)
-        print("**************************************")
-
+        // let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        // print(urls[urls.count-1] as URL)
+        
         return true
     }
     
@@ -93,6 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             coreDataStack.saveContext()
             importJSONSeedData()
+            
+            // Value used to trigger sync from Firebase if this is initial CDS load and db already exists in Firebase
+            UserDefaults.standard.set(true, forKey: "initialSyncWithFirebase")
+
         } catch let error as NSError {
             print("Error fetching: \(error), \(error.userInfo)")
         }
@@ -187,5 +184,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         coreDataStack.saveContext()
-    } // end func importJSONSeedData
-}
+    }                                       // end func importJSONSeedData
+    
+}               // end AppDelegate
