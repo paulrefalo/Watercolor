@@ -41,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc = storyboard.instantiateInitialViewController()!
         }
 
+
+
+
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
 

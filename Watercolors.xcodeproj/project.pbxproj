@@ -341,7 +341,6 @@
 				TargetAttributes = {
 					4805C7681E942CBE00C885F4 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = ZP5B9HS488;
 						ProvisioningStyle = Automatic;
 					};
 					4805C77F1E942CBF00C885F4 = {

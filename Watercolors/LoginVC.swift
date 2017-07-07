@@ -13,9 +13,9 @@ import Firebase
 import FirebaseDatabase
 
 class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsControllerDelegate {
-    
+
     // MARK: - Properties
-    
+
     let ref = FIRDatabase.database().reference(withPath: "Watercolors")
     var retrievedTime = Int()
     var firebaseData = NSDictionary()
@@ -25,14 +25,14 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     var syncPredicate: NSPredicate?
 
     // MARK: - IBOutlets and Actions
-    
+
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var loginText: UILabel!
-    
+
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
-    
+
     @IBAction func cancelButtonPressed(_ sender: Any) {
         print("Cancel/Skip button pressed")
         if (FBSDKAccessToken.current() != nil) {
@@ -41,33 +41,33 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             presentInitialVC()
         }
     }
-    
+
     // MARK: - Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = UIColor(patternImage: UIImage(named: "watercolor background")!)
         loginText.layer.zPosition = 5       // set zPosition of label and button so emitter goes to the back
         cancelButton.layer.zPosition = 6
         reconfigurePage()                   // set up page for either logged in or not status
-        
+
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in, do work such as go to next view controller.
             print("User is currently logged in with FB")
             print("Logged in as: ", FBSDKAccessToken.current().userID)
-            
+
             // page setup when logged in.  Set: welcome/hello text, toggle skip/cancel button
             if let firstName = UserDefaults.standard.string(forKey: "userFirstName") {
                 topLabel.text = "Hi, \(firstName)!"
             }
-            
+
             // Each time loginVC loads, if logged into FB and Firebase db exists, perform sync
             if let userID = FIRAuth.auth()?.currentUser?.uid {
                 ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
                     let refData = snapshot.value as? NSDictionary
                     let firebaseTime = refData?["Time of Sync"]
-                    
+
                     if firebaseTime != nil {
                         // Firebase entry for user exists -> sync data
                         let refResult = snapshot.value
@@ -78,7 +78,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                         print("No user found in Firebase, will call seedFirebaseDB")
                         self.seedFirebaseDB(userID: userID)
                     }
-                    
+
                 })
             } else {
                 print("error getting Firebase UserID")
@@ -97,17 +97,22 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
 
         loginButton.delegate = self
     }
-    
+
     // MARK: - Functions
-    
+
     func reconfigurePage() {
-        let dateString = getDateFormatString()
 
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in with FB
             coverView.alpha = 0.5
             cancelButton.setTitle("Cancel", for: .normal)
-            loginText.text = "Last data sync at \(dateString)"
+            let dateString = getDateFormatString()
+
+            if dateString == "" {
+                loginText.text = "Data will be automatically sync"
+            } else {
+               loginText.text = "Last data sync at \(dateString)"
+            }
         } else {
             // User NOT logged in
             topLabel.text = "Welcome!"
@@ -116,29 +121,29 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             loginText.text = "Login to sync and save your paint inventory"
         }
     }
-    
+
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
         reconfigurePage()
         presentInitialVC()
     }
-    
+
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
             print(error)
             return
         }
-        
+
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in, do work such as go to next view controller.
             presentInitialVC()
-            
+
             // Firebase Login
             self.firebaseLogin()
         }
-        
+
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
-            
+
             if err != nil {
                 print("Failed to start graph request:", err as Any)
                 return
@@ -147,19 +152,19 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 let fbDetails = result as! NSDictionary
                 print(fbDetails)
                 if let name: String = fbDetails["name"] as? String {
-                    
+
                     let fullNameArray = name.components(separatedBy: " ")
-                    
+
                     let firstName = fullNameArray[0]
                     let surname = fullNameArray[1]
-                    
+
                     UserDefaults.standard.set(name, forKey: "fullUserName")
                     UserDefaults.standard.set(firstName, forKey: "userFirstName")
                     UserDefaults.standard.set(surname, forKey: "userSurname")
-                    
+
                     print("*** First is:", firstName)
                     print("*** Surname is:", surname)
-                    
+
                     self.topLabel.text = "Hi, \(firstName)!"
                 }
                 if let id: String = fbDetails["id"] as? String {
@@ -169,20 +174,20 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                     print("*** Email is:  ", email)
                     UserDefaults.standard.set(email, forKey: "userEmail")
                 }
-                
+
             }
         }
     }
-    
+
     func presentInitialVC() {  // transition to PaintListTVC
 
         if let tabViewController = storyboard?.instantiateViewController(withIdentifier: "InitialTabBarController") as? UITabBarController {
             present(tabViewController, animated: true, completion: nil)
         }
     }
-    
+
     func firebaseLogin() {
-        
+
         if let accessTokenString = FBSDKAccessToken.current().tokenString {
             let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
             FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
@@ -202,37 +207,37 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             })
         }
     }
-    
+
     func emitter() {
         let emitter = Emitter.get(image: #imageLiteral(resourceName: "canvas"))
         emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2, y: 0)
         emitter.emitterSize = CGSize(width: view.frame.size.width, height: 2.0)
         view.layer.addSublayer(emitter)
     }
-    
+
     func seedFirebaseDB(userID: String) {
-        
+
         setTimeOfLastSync(userID: userID)
-        
+
         let fullName = UserDefaults.standard.value(forKey: "fullUserName")
         let nameRef = self.ref.child(userID).ref.child("Name")
         nameRef.setValue(fullName)
-        
+
         // get array of paint numbers for Core Data
         let paintNumberArray: [Int] = getArrayOfPaintsFromCDS()
-    
+
         // loop over array and make paintItems with paint number
         for paintNumber in paintNumberArray {
             let paintNumberString = "\(paintNumber)"
             let paintItem = PaintItem(paintNumber: paintNumberString, havePaint: 0, needPaint: 0)
             let paintItemRef = self.ref.child(userID).ref.child(paintNumberString)
-            
+
             // add item to Firebase under ref.child(userID)
             paintItemRef.setValue(paintItem.toAnyObject())
         }
 
     }
-    
+
     func setTimeOfLastSync(userID: String) {
         // set time in Firebase and UserDefaults.standard.set(time, forKey: "timeOfLastSync")
         let timeSinceEpoch = Int(Date().timeIntervalSince1970)
@@ -241,21 +246,28 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         timeRef.setValue(timeSinceEpoch)
         UserDefaults.standard.set(timeSinceEpoch, forKey: "timeOfLastSync")
     }
-    
+
     func getDateFormatString() -> String {
         let time = UserDefaults.standard.value(forKey: "timeOfLastSync")
-        let date = NSDate(timeIntervalSince1970: time as! TimeInterval)
-        let dayTimePeriodFormatter = DateFormatter()
-        dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
-        
-        let dateString = dayTimePeriodFormatter.string(from: date as Date)
-        return dateString
+
+        if time != nil {
+            let date = NSDate(timeIntervalSince1970: time as! TimeInterval)
+            let dayTimePeriodFormatter = DateFormatter()
+            dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+
+            let dateString = dayTimePeriodFormatter.string(from: date as Date)
+
+            return dateString
+        } else  {
+            return ""
+
+        }
     }
-    
+
     func getArrayOfPaintsFromCDS() -> Array<Int> {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedContext
-        
+
         let request = NSFetchRequest<Paint>(entityName: "Paint")
 
         var resultsArray = [Int]()
@@ -270,7 +282,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         } catch let error as NSError {
             print("Could not fetch \(error)")
         }
-        
+
         return resultsArray
     }
 
@@ -278,31 +290,31 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         // user is logged in
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedContext
-        
+
         // get array of paint numbers for Core Data
         let paintNumberArray: [Int] = getArrayOfPaintsFromCDS()
-        
+
         // get time from Firebase and time from UserDefaults and then compare
         let CDStime = UserDefaults.standard.value(forKey: "timeOfLastSync") as! Int
-        
+
         // FOR TESTING use CDStime = 1399291339 for pre and CDStime = 1599291339 for post
         // CDStime = 1399291339
-        
+
         if CDStime == firebaseTime {
-            
+
             // set time in CDS and Firebase
             print("Times equate -> no sync needed")
             setTimeOfLastSync(userID: userID)
-            
+
         } else if CDStime < firebaseTime ||
             UserDefaults.standard.value(forKey: "initialSyncWithFirebase") as! Bool == true {
-            // sync from Firebase to CDS if either Firebase has newer timestamp or this is initial CDS load 
+            // sync from Firebase to CDS if either Firebase has newer timestamp or this is initial CDS load
             // Update value so initial load can only happen once (e.g. get a new device or on app update)
             if UserDefaults.standard.value(forKey: "initialSyncWithFirebase") == nil ||
                 UserDefaults.standard.value(forKey: "initialSyncWithFirebase") as! Bool == true {
                 UserDefaults.standard.set(false, forKey: "initialSyncWithFirebase")
             }
-            
+
             // refData?.forEach { print("\($0): \($1)") }
 
             for (key, value) in (refData)! {
@@ -310,10 +322,10 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 if paintNumberString == "Time of Sync" || paintNumberString == "Name" {
                     continue
                 }
-                
+
                 let valueDict: NSDictionary? = value as? NSDictionary
                 // valueDict?.forEach { print("\($0): \($1)") }
-                
+
                 let havePaint = valueDict?["havePaint"] as! Int
                 let needPaint = valueDict?["needPaint"] as! Int
 
@@ -321,35 +333,35 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 let request = NSFetchRequest<Paint>(entityName: "Paint")
                 let paintSort = NSSortDescriptor(key: "sort_order", ascending: true)
                 request.sortDescriptors = [paintSort]
-                
+
                 syncPredicate = NSPredicate(format: "paint_number == %@", paintNumberString)
-                
+
                 fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
-                
+
                 request.predicate = syncPredicate
                 fetchedResultsController.delegate = self
-                
+
                 do {
                     let results = try managedContext.fetch(request)
                     let currentPaint = results.first
-                  
+
                     // update values in CoreData
                     if havePaint == 1 {
                         currentPaint?.have = true
                     } else {
                         currentPaint?.have = false
                     }
-                 
+
                     if needPaint == 1 {
                         currentPaint?.need = true
                     } else {
                         currentPaint?.need = false
                     }
-                    
+
                 } catch let error as NSError {
                     print("Could not fetch \(error)")
                 }
-                
+
                 // save context
                 do {
                     if managedContext.hasChanges {
@@ -364,7 +376,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             // set time in CDS and Firebase
             print("Sync from Firebase to CDS")
             setTimeOfLastSync(userID: userID)
-            
+
         } else if CDStime > firebaseTime {
             // sync from CDS to Firebase
             print("Sync from CDS to Firebase")
@@ -378,9 +390,9 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 request.sortDescriptors = [paintSort]
 
                 syncPredicate = NSPredicate(format: "paint_number == %@", paintNumberString)
-                
+
                 fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
-                
+
                 request.predicate = syncPredicate
                 fetchedResultsController.delegate = self
 
@@ -388,18 +400,18 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                     let results = try managedContext.fetch(request)
                     let have = results.first?.value(forKey: "have") as! Int
                     let need = results.first?.value(forKey: "need") as! Int
-                    
+
                     let paintHaveRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("havePaint")
                     paintHaveRef.setValue(have)
-                    
+
                     let paintNeedRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("needPaint")
                     paintNeedRef.setValue(need)
-        
+
                 } catch let error as NSError {
                     print("Could not fetch \(error)")
                 }
             }
-            
+
             // set time in CDS and Firebase
             setTimeOfLastSync(userID: userID)
         } else {
@@ -408,5 +420,5 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         let dateString = getDateFormatString()
         loginText.text = "Last data sync at \(dateString)"
     }
-
+    
 }

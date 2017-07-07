@@ -63,8 +63,8 @@ class PaintInfoTVC: UITableViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedContext = appDelegate.coreDataStack.managedContext
-        
-        userID = (FIRAuth.auth()?.currentUser?.uid)!
+
+        userID = (FIRAuth.auth()?.currentUser?.uid) ?? ""
     
         // setup the view portion of the screen
         let paintImageName = String(currentPaint.paint_number)
@@ -188,21 +188,32 @@ class PaintInfoTVC: UITableViewController {
         
         let paintNumber = currentPaint.paint_number
         let paintNumberString = "\(paintNumber)"
-        let paintHaveRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("havePaint")
+
+        var paintHaveRef: FIRDatabaseReference?
+
+        // can be nil if user has never connected to FB
+        if (userID != "") {
+
+            paintHaveRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("havePaint")
+        }
 
         if haveSwitch.isOn {
             currentPaint.have = true
             haveImage.image = UIImage(named: "Have")
             
             // Update Firebase to keep in sync and in the cloud
+            if let paintHaveRef = paintHaveRef {
             paintHaveRef.setValue(1)
+            }
             
         } else {
             currentPaint.have = false
             haveImage.image = UIImage(named: "Have-Not")
 
             // Update Firebase to keep in sync and in the cloud
+            if let paintHaveRef = paintHaveRef {
             paintHaveRef.setValue(0)
+            }
         }
         do {
             if managedContext.hasChanges {
@@ -221,20 +232,31 @@ class PaintInfoTVC: UITableViewController {
         
         let paintNumber = currentPaint.paint_number
         let paintNumberString = "\(paintNumber)"
-        let paintNeedRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("needPaint")
+
+        var paintNeedRef: FIRDatabaseReference?
+
+        // can be nil if user has never connected to FB
+        if (userID != "") {
+
+            paintNeedRef = self.ref.child(userID).ref.child(paintNumberString).ref.child("needPaint")
+        }
 
         if needSwitch.isOn {
             currentPaint.need = true
             needImage.image = UIImage(named: "Need")
             
             // Update Firebase to keep in sync and in the cloud
-            paintNeedRef.setValue(1)
+            if let paintNeedRef  = paintNeedRef {
+               paintNeedRef.setValue(1)
+            }
         } else {
             currentPaint.need = false
             needImage.image = UIImage(named: "Need-Not")
             
             // Update Firebase to keep in sync and in the cloud
+            if let paintNeedRef  = paintNeedRef {
             paintNeedRef.setValue(0)
+            }
         }
         
         do {
@@ -249,12 +271,15 @@ class PaintInfoTVC: UITableViewController {
     }
     
     func setTimeOfLastSync(userID: String) {
+
+        if (userID != "") {
         // set time in Firebase and UserDefaults.standard.set(time, forKey: "timeOfLastSync")
         let timeSinceEpoch = Int(Date().timeIntervalSince1970)
         print("Time: \(timeSinceEpoch)")
         let timeRef = self.ref.child(userID).ref.child("Time of Sync")
         timeRef.setValue(timeSinceEpoch)
         UserDefaults.standard.set(timeSinceEpoch, forKey: "timeOfLastSync")
+        }
     }
 
     // MARK: - Navigation
