@@ -34,6 +34,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         managedContext = appDelegate.coreDataStack.managedContext
         self.initializeFetchedResultsController()
         searchBar.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,6 +167,9 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
             print(error)
+            let alert = UIAlertController(title: "Error", message: "Error during Firebase login.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         print("*** From VC Successfully logged in with facebook...")

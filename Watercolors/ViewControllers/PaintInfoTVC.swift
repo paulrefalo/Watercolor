@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FBSDKLoginKit
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseCore
@@ -21,6 +22,7 @@ class PaintInfoTVC: UITableViewController {
     var managedContext: NSManagedObjectContext!
     let ref = FIRDatabase.database().reference(withPath: "Watercolors")
     var userID: String = ""
+    var FBloginCurrent: Bool = false
 
 
     // Cell Identifiers
@@ -55,6 +57,11 @@ class PaintInfoTVC: UITableViewController {
         tableView.estimatedRowHeight = estimatedCellHeight;
 
         tableView.delegate = self
+        
+        if FBSDKAccessToken.current() != nil {
+            FBloginCurrent = true
+            print("FBloginCurrent is: ", FBloginCurrent)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,8 +209,10 @@ class PaintInfoTVC: UITableViewController {
             haveImage.image = UIImage(named: "Have")
             
             // Update Firebase to keep in sync and in the cloud
-            if let paintHaveRef = paintHaveRef {
-            paintHaveRef.setValue(1)
+            if FBloginCurrent == true {
+                if let paintHaveRef = paintHaveRef {
+                    paintHaveRef.setValue(1)
+                }
             }
             
         } else {
@@ -211,8 +220,10 @@ class PaintInfoTVC: UITableViewController {
             haveImage.image = UIImage(named: "Have-Not")
 
             // Update Firebase to keep in sync and in the cloud
-            if let paintHaveRef = paintHaveRef {
-            paintHaveRef.setValue(0)
+            if FBloginCurrent == true {
+                if let paintHaveRef = paintHaveRef {
+                    paintHaveRef.setValue(0)
+                }
             }
         }
         do {
@@ -246,16 +257,20 @@ class PaintInfoTVC: UITableViewController {
             needImage.image = UIImage(named: "Need")
             
             // Update Firebase to keep in sync and in the cloud
-            if let paintNeedRef  = paintNeedRef {
-               paintNeedRef.setValue(1)
+            if FBloginCurrent == true {
+                if let paintNeedRef  = paintNeedRef {
+                   paintNeedRef.setValue(1)
+                }
             }
         } else {
             currentPaint.need = false
             needImage.image = UIImage(named: "Need-Not")
             
             // Update Firebase to keep in sync and in the cloud
-            if let paintNeedRef  = paintNeedRef {
-            paintNeedRef.setValue(0)
+            if FBloginCurrent == true {
+                if let paintNeedRef  = paintNeedRef {
+                paintNeedRef.setValue(0)
+                }
             }
         }
         
@@ -273,11 +288,13 @@ class PaintInfoTVC: UITableViewController {
     func setTimeOfLastSync(userID: String) {
 
         if (userID != "") {
-        // set time in Firebase and UserDefaults.standard.set(time, forKey: "timeOfLastSync")
+        // set time in Firebase and/or UserDefaults.standard.set(time, forKey: "timeOfLastSync")
         let timeSinceEpoch = Int(Date().timeIntervalSince1970)
         print("Time: \(timeSinceEpoch)")
-        let timeRef = self.ref.child(userID).ref.child("Time of Sync")
-        timeRef.setValue(timeSinceEpoch)
+        if FBloginCurrent == true {
+            let timeRef = self.ref.child(userID).ref.child("Time of Sync")
+            timeRef.setValue(timeSinceEpoch)
+        }
         UserDefaults.standard.set(timeSinceEpoch, forKey: "timeOfLastSync")
         }
     }

@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
         
+        // if true triggers download from Firebase to CDS; gets set to true only on initial CDS load
+        UserDefaults.standard.set(false, forKey: "initialSyncWithFirebase")
+
         print("Current ID", FBSDKAccessToken.current())
         if (FBSDKAccessToken.current() == nil) {
             // Not logged in to fb so -> show onboarding screen

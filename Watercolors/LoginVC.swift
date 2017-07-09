@@ -23,7 +23,10 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     var managedContext: NSManagedObjectContext!
     var fetchedResultsController : NSFetchedResultsController<Paint>!
     var syncPredicate: NSPredicate?
+    
+    let progressInd = ActivityInd(text: "Syncing data")
 
+    
     // MARK: - IBOutlets and Actions
 
     @IBOutlet weak var topLabel: UILabel!
@@ -46,7 +49,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+  
         view.backgroundColor = UIColor(patternImage: UIImage(named: "watercolor background")!)
         loginText.layer.zPosition = 5       // set zPosition of label and button so emitter goes to the back
         cancelButton.layer.zPosition = 6
@@ -63,14 +66,29 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             }
 
             // Each time loginVC loads, if logged into FB and Firebase db exists, perform sync
+//            let userID = FIRAuth.auth()?.currentUser?.uid
+//            ref.child(userID!).observe(.value, with: { snapshot in
+//                let monkey = snapshot.value as? NSDictionary
+//                monkey?.forEach { print("\($0): \($1)") }
+//                print("Did you see the monkey?")
+//            })
+            
+            //
+            //                ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            //                    let refData = snapshot.value as? NSDictionary
+            //                    let firebaseTime = refData?["Time of Sync"]
+            //                    refData?.forEach { print("\($0): \($1)") }
+
             if let userID = FIRAuth.auth()?.currentUser?.uid {
                 ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
                     let refData = snapshot.value as? NSDictionary
                     let firebaseTime = refData?["Time of Sync"]
 
                     if firebaseTime != nil {
+                        print("firebaseTime in loginButton is:  ", firebaseTime)
+
                         // Firebase entry for user exists -> sync data
-                        let refResult = snapshot.value
+                        _ = snapshot.value  // was refResult
                         print("*** Found child from observeSingleEvent")
                         self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: refData)
                     } else {
@@ -78,13 +96,56 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                         print("No user found in Firebase, will call seedFirebaseDB")
                         self.seedFirebaseDB(userID: userID)
                     }
-
+                    
                 })
+//                ref.child(userID).observe(.value, with: { snapshot in
+//                    let monkey = snapshot.value as? NSDictionary
+//                    monkey?.forEach { print("\($0): \($1)") }
+//                    print("Did you see the monkey?")
+                
+//                    print("firebaseTime in VDL is:  ", firebaseTime)
+//                    // Firebase entry for user exists -> sync data
+//                    self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: fullRef)
+                
+                
+//                var firebaseTime = ""
+//                var fullRef? = NSDictionary()
+//
+//                ref.child(userID).observe(.value, with: { snapshot in
+//      
+//                    fullRef = snapshot.value as? NSDictionary
+////                    fullRef?.forEach { print("\($0): \($1)") }
+////                    print("Did you see the fullRef?")
+////                    firebaseTime = fullRef["Time of Sync"]
+//
+//                })
+//
+//                guard fullRef != nil else {
+//                    print("Error get firebase ref")
+//                    return
+//                }
+//                for (key, value) in (fullRef)! {
+//                    let firebaseTimeString = key as! String
+//                    let resultDict: NSDictionary? = value as? NSDictionary
+//                    if let foundTime = resultDict?["Time of Sync"] {
+//                        break
+//                    }
+//                }
+
+                
+                
+//                } else {
+//                    // Firebase entry for user NOT found -> see Firebase DB
+//                    print("No user found in Firebase, will call seedFirebaseDB")
+//                    self.seedFirebaseDB(userID: userID)
+//                }
+                
             } else {
                 print("error getting Firebase UserID")
             }
 
         } else {
+            progressInd.hide()
             emitter()  // start emitter
             loginText.isHidden = false
         }
@@ -96,6 +157,12 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         view.addSubview(loginButton)    // add FB button to the page
 
         loginButton.delegate = self
+        
+        // Create and add activity indicator to screen
+
+        self.view.addSubview(progressInd)
+        progressInd.backgroundColor = UIColor.darkGray
+        progressInd.layer.zPosition = 7
     }
 
     // MARK: - Functions
@@ -129,13 +196,62 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     }
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+
         if error != nil {
             print(error)
+            let alert = UIAlertController(title: "Error", message: "Error during Facebook login.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
 
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in, do work such as go to next view controller.
+
+            // Each time loginVC loads, if logged into FB and Firebase db exists, perform sync
+            
+            if let userID = FIRAuth.auth()?.currentUser?.uid {
+            
+                ref.child(userID).observe(.value, with: { snapshot in
+                    let loginRef = snapshot.value as? NSDictionary
+//                    loginRef?.forEach { print("\($0): \($1)") }
+                    let firebaseTime = loginRef?["Time of Sync"]
+                    
+
+                    if firebaseTime != nil {
+                        print("firebaseTime in VDL is:  ", firebaseTime)
+                        // Firebase entry for user exists -> sync data
+                        self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: loginRef)
+                    } else {
+                        // Firebase entry for user NOT found -> see Firebase DB
+                        print("No user found in Firebase, will call seedFirebaseDB")
+                        self.seedFirebaseDB(userID: userID)
+                    }
+                    
+                })
+                
+//                ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+//                    let refData = snapshot.value as? NSDictionary
+//                    let firebaseTime = refData?["Time of Sync"]
+//                    
+//                    if firebaseTime != nil {
+//                        print("firebaseTime in loginButton is:  ", firebaseTime)
+//
+//                        // Firebase entry for user exists -> sync data
+//                        _ = snapshot.value  // was refResult
+//                        print("*** Found child from observeSingleEvent")
+//                        self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: refData)
+//                    } else {
+//                        // Firebase entry for user NOT found -> see Firebase DB
+//                        print("No user found in Firebase, will call seedFirebaseDB")
+//                        self.seedFirebaseDB(userID: userID)
+//                    }
+//                    
+//                })
+            } else {
+                print("error getting Firebase UserID")
+            }
+            
             presentInitialVC()
 
             // Firebase Login
@@ -146,6 +262,9 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
 
             if err != nil {
                 print("Failed to start graph request:", err as Any)
+                let alert = UIAlertController(title: "Error", message: "Error during Firebase request.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             } else {
                 print(result as Any)
@@ -192,7 +311,10 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
             FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
                 if error != nil {
-                    print("! Error on Firebase Login")
+                    print("! Error on Firebase Login: \(String(describing: error))")
+                    let alert = UIAlertController(title: "Error", message: "Error during Firebase login.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     return
                 } else {
                     print("******* Successful Firebase Login as: ", user as Any)
@@ -218,7 +340,10 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     func seedFirebaseDB(userID: String) {
 
         setTimeOfLastSync(userID: userID)
-
+        
+        if UserDefaults.standard.value(forKey: "fullUserName") == nil {
+            UserDefaults.standard.set("", forKey: "fullUserName")
+        }
         let fullName = UserDefaults.standard.value(forKey: "fullUserName")
         let nameRef = self.ref.child(userID).ref.child("Name")
         nameRef.setValue(fullName)
@@ -248,6 +373,10 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     }
 
     func getDateFormatString() -> String {
+        if UserDefaults.standard.value(forKey: "timeOfLastSync") == nil {
+            UserDefaults.standard.set("", forKey: "timeOfLastSync")
+        }
+        
         let time = UserDefaults.standard.value(forKey: "timeOfLastSync")
 
         if time != nil {
@@ -287,27 +416,48 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     }
 
     func syncDataWithFirebase(userID: String, firebaseTime: Int, refData: NSDictionary?) {
+        print("firebaseTime at start of sync:  ", firebaseTime)
+
         // user is logged in
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedContext
+        
+        // show Activity Indicator
+        progressInd.show()
 
         // get array of paint numbers for Core Data
         let paintNumberArray: [Int] = getArrayOfPaintsFromCDS()
 
         // get time from Firebase and time from UserDefaults and then compare
+        let timeSinceEpoch = Int(Date().timeIntervalSince1970)
+
+        // user default guard statements
+        guard UserDefaults.standard.value(forKey: "timeOfLastSync") as? Int != nil else {
+            UserDefaults.standard.set(108, forKey: "timeOfLastSync")
+            print("Guard statement setting timeSinceEpoch called")
+            return
+        }
+        
+        print("firebaseTime after guard statement:  ", firebaseTime)
+        
         let CDStime = UserDefaults.standard.value(forKey: "timeOfLastSync") as! Int
 
         // FOR TESTING use CDStime = 1399291339 for pre and CDStime = 1599291339 for post
         // CDStime = 1399291339
+        print("CDStime is:  ", CDStime)
+        print("firebaseTime is:  ", firebaseTime)
+
 
         if CDStime == firebaseTime {
 
             // set time in CDS and Firebase
             print("Times equate -> no sync needed")
-            setTimeOfLastSync(userID: userID)
 
         } else if CDStime < firebaseTime ||
             UserDefaults.standard.value(forKey: "initialSyncWithFirebase") as! Bool == true {
+            
+            print("Sync from Firebase to CDS")
+
             // sync from Firebase to CDS if either Firebase has newer timestamp or this is initial CDS load
             // Update value so initial load can only happen once (e.g. get a new device or on app update)
             if UserDefaults.standard.value(forKey: "initialSyncWithFirebase") == nil ||
@@ -373,10 +523,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 }
             }
 
-            // set time in CDS and Firebase
-            print("Sync from Firebase to CDS")
-            setTimeOfLastSync(userID: userID)
-
         } else if CDStime > firebaseTime {
             // sync from CDS to Firebase
             print("Sync from CDS to Firebase")
@@ -412,11 +558,15 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 }
             }
 
-            // set time in CDS and Firebase
-            setTimeOfLastSync(userID: userID)
         } else {
             print("This shouldn't happen")
         }
+        
+        // set time in CDS and Firebase
+        setTimeOfLastSync(userID: userID)
+        
+        sleep(2)
+        progressInd.hide()
         let dateString = getDateFormatString()
         loginText.text = "Last data sync at \(dateString)"
     }

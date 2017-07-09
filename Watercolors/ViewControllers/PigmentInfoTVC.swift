@@ -42,7 +42,8 @@ class PigmentInfoTVC: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
+        self.tabBarController?.tabBar.isHidden = true
 
         self.title = currentPigment.pigment_code
         pigmentTitleLabel.text = currentPigment.pigment_words

@@ -20,6 +20,7 @@
 		4868711A1F0954060001747A /* PaintListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486871191F0954060001747A /* PaintListTableViewController.swift */; };
 		489D060B1EE3239400ED20B0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D060A1EE3239400ED20B0 /* LoginVC.swift */; };
 		48A64C9A1F0B78D80004307F /* PaintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A64C991F0B78D80004307F /* PaintItem.swift */; };
+		48A64C9C1F11A4D20004307F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */; };
 		6837FA44C328193AB8DB05EB /* Pods_WatercolorsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C4A2446281BD3B56D8A1A6 /* Pods_WatercolorsTests.framework */; };
 		8E88C1357731D6FC963F767A /* Pods_Watercolors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6820E0CB5B2FA27595C3F38 /* Pods_Watercolors.framework */; };
 		A51BB02A44BFD63A83C0408B /* Pods_WatercolorsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9E6349AB58C386A927F32B /* Pods_WatercolorsUITests.framework */; };
@@ -80,6 +81,7 @@
 		486871191F0954060001747A /* PaintListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaintListTableViewController.swift; path = ViewControllers/PaintListTableViewController.swift; sourceTree = "<group>"; };
 		489D060A1EE3239400ED20B0 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		48A64C991F0B78D80004307F /* PaintItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaintItem.swift; path = Watercolors/PaintItem.swift; sourceTree = "<group>"; };
+		48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		6B951EB84E28E25CA86D4348 /* Pods-Watercolors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watercolors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors.debug.xcconfig"; sourceTree = "<group>"; };
 		70D10C59D56D44B8FDCFFE70 /* Pods-WatercolorsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsUITests/Pods-WatercolorsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		88BE69C0CEA67BE3BD2DE705 /* Pods-WatercolorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsTests/Pods-WatercolorsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				F00B69A01E9C41FE0021F055 /* PaintInfoTVC.swift */,
 				486871191F0954060001747A /* PaintListTableViewController.swift */,
 				F00B699B1E9C41930021F055 /* SearchPigmentTCV.swift */,
+				48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */,
 				F00B69A21E9C42210021F055 /* PigmentInfoTVC.swift */,
 				F00B69A61E9C43060021F055 /* TableViewCells */,
 			);
@@ -565,6 +568,7 @@
 				F00B69A11E9C41FE0021F055 /* PaintInfoTVC.swift in Sources */,
 				48A64C9A1F0B78D80004307F /* PaintItem.swift in Sources */,
 				4805C7751E942CBE00C885F4 /* Watercolors.xcdatamodeld in Sources */,
+				48A64C9C1F11A4D20004307F /* ActivityIndicator.swift in Sources */,
 				4868711A1F0954060001747A /* PaintListTableViewController.swift in Sources */,
 				F00B698C1E9BFB790021F055 /* Pigment+CoreDataClass.swift in Sources */,
 				F00B69A81E9C433F0021F055 /* SearchPaintTableViewCell.swift in Sources */,

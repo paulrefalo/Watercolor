@@ -122,26 +122,27 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
     // MARK: - Actions
 
     @IBAction func displayLoginVCModally(_ sender: Any) {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-            self.present(vc, animated: true, completion: nil)
+        dismiss(animated:true,completion:nil)
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+//            self.present(vc, animated: true, completion: nil)
     }
 
     //Search Functionality
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         if !searchText.isEmpty  {
-
+            
             let predicate1 = NSPredicate(format: "pigment_name contains [cd] %@", searchText)
             let predicate2 = NSPredicate(format: "pigment_code contains [cd] %@", searchText)
             let predicate3 = NSPredicate(format: "chemical_name contains [cd] %@", searchText)
-
+            
             searchPredicate = NSCompoundPredicate(orPredicateWithSubpredicates:[predicate1, predicate2, predicate3])
             
             
         } else {
             searchPredicate = nil
-
-    }
+            
+        }
         initializeFetchedResultsController()
         tableView.reloadData()
     }
