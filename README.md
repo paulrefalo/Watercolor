@@ -9,9 +9,7 @@ This app also serves as an excellent reference for each paint and pigment.
 
 ![Alt text](https://raw.github.com/paulrefalo/Watercolors/LoginSS.png?raw=true "Optional Title")
 ![Alt text](https://raw.github.com/paulrefalo/Watercolors/LoginSS.png)
-
-
-
+![Alt text](LoginSS.png "Description goes here")
 
 ## Getting Started
 
