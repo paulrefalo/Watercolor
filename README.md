@@ -1,70 +1,38 @@
 # Watercolor
 
-One Paragraph of project description goes here
+iOS app used to keep inventory of M Graham watercolor paints (http://mgraham.com/products/watercolors/)
+The app has all M Graham watercolor paints and pigments stored in core data.  Users can log into Facebook with
+OAuth which will automatically log into Firebase and create a new user.  User's paint inventory and wishlist data
+will be store both in core data and in backed up in Firebase.
 
-Getting Started
+This app also serves as an excellent reference for each paint and pigment.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Getting Started
 
-Prerequisites
+Install the app on an iOS device
 
-What things you need to install the software and how to install them
+### Prerequisites
 
-Give examples
-Installing
+An iOS device capable of running Version 8.3.3 (8E3004b) 
+```
+An iOS device capable of running Version 8.3.3 (8E3004b) 
+Developed with Swift 3.1
+```
+## Built With
 
-A step by step series of examples that tell you have to get a development env running
+* XCode Version 8.3.3 (8E3004b) 
+* Developed with Swift 3.1
 
-Say what the step will be
+## Authors
 
-Give the example
-And repeat
+* **Paul ReFalo**
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+## Acknowledgements
 
-Running the tests
+* Many thanks to everyone at Udacity for the terrific program
 
-Explain how to run the automated tests for this system
+## License
 
-Break down into end to end tests
+This project open; no licensing
 
-Explain what these tests test and why
 
-Give an example
-And coding style tests
-
-Explain what these tests test and why
-
-Give an example
-Deployment
-
-Add additional notes about how to deploy this on a live system
-
-Built With
-
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
-
-Versioning
-
-We use SemVer for versioning. For the versions available, see the tags on this repository.
-
-Authors
-
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
-
-License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details
-
-Acknowledgments
-
-Hat tip to anyone who's code was used
-Inspiration
-etc
