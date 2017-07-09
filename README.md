@@ -7,7 +7,7 @@ will be store both in core data and in backed up in Firebase.
 
 This app also serves as an excellent reference for each paint and pigment.
 
-![Alt text](https://github.com/paulrefalo/Watercolors/LoginSS?raw=true "Optional Title")
+![Alt text](https://raw.github.com/paulrefalo/Watercolors/LoginSS?raw=true "Optional Title")
 
 
 
