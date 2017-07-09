@@ -8,6 +8,8 @@ will be store both in core data and in backed up in Firebase.
 This app also serves as an excellent reference for each paint and pigment.
 
 ![Alt text](paulrefalo/Watercolors/LoginSS.png?raw=true "Login")
+![Alt text](/paulrefalo/Watercolors/LoginSS?raw=true "Optional Title")
+
 
 
 ## Getting Started
