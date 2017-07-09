@@ -56,7 +56,6 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       // self.extendedLayoutIncludesOpaqueBars = !self.navigationController!.navigationBar.isTranslucent
 
     }
 
@@ -123,8 +122,6 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
 
     @IBAction func displayLoginVCModally(_ sender: Any) {
         dismiss(animated:true,completion:nil)
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-//            self.present(vc, animated: true, completion: nil)
     }
 
     //Search Functionality

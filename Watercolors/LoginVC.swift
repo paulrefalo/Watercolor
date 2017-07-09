@@ -66,79 +66,25 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
             }
 
             // Each time loginVC loads, if logged into FB and Firebase db exists, perform sync
-//            let userID = FIRAuth.auth()?.currentUser?.uid
-//            ref.child(userID!).observe(.value, with: { snapshot in
-//                let monkey = snapshot.value as? NSDictionary
-//                monkey?.forEach { print("\($0): \($1)") }
-//                print("Did you see the monkey?")
-//            })
-            
-            //
-            //                ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
-            //                    let refData = snapshot.value as? NSDictionary
-            //                    let firebaseTime = refData?["Time of Sync"]
-            //                    refData?.forEach { print("\($0): \($1)") }
 
             if let userID = FIRAuth.auth()?.currentUser?.uid {
                 ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+
                     let refData = snapshot.value as? NSDictionary
                     let firebaseTime = refData?["Time of Sync"]
 
                     if firebaseTime != nil {
-                        print("firebaseTime in loginButton is:  ", firebaseTime)
+                        print("***firebaseTime in loginButton is:  ", firebaseTime ?? 42)
+                        refData?.forEach { print("\($0): \($1)") }
 
                         // Firebase entry for user exists -> sync data
-                        _ = snapshot.value  // was refResult
-                        print("*** Found child from observeSingleEvent")
                         self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: refData)
                     } else {
-                        // Firebase entry for user NOT found -> see Firebase DB
+                        // Firebase entry for user NOT found -> seed Firebase DB
                         print("No user found in Firebase, will call seedFirebaseDB")
                         self.seedFirebaseDB(userID: userID)
                     }
-                    
                 })
-//                ref.child(userID).observe(.value, with: { snapshot in
-//                    let monkey = snapshot.value as? NSDictionary
-//                    monkey?.forEach { print("\($0): \($1)") }
-//                    print("Did you see the monkey?")
-                
-//                    print("firebaseTime in VDL is:  ", firebaseTime)
-//                    // Firebase entry for user exists -> sync data
-//                    self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: fullRef)
-                
-                
-//                var firebaseTime = ""
-//                var fullRef? = NSDictionary()
-//
-//                ref.child(userID).observe(.value, with: { snapshot in
-//      
-//                    fullRef = snapshot.value as? NSDictionary
-////                    fullRef?.forEach { print("\($0): \($1)") }
-////                    print("Did you see the fullRef?")
-////                    firebaseTime = fullRef["Time of Sync"]
-//
-//                })
-//
-//                guard fullRef != nil else {
-//                    print("Error get firebase ref")
-//                    return
-//                }
-//                for (key, value) in (fullRef)! {
-//                    let firebaseTimeString = key as! String
-//                    let resultDict: NSDictionary? = value as? NSDictionary
-//                    if let foundTime = resultDict?["Time of Sync"] {
-//                        break
-//                    }
-//                }
-
-                
-                
-//                } else {
-//                    // Firebase entry for user NOT found -> see Firebase DB
-//                    print("No user found in Firebase, will call seedFirebaseDB")
-//                    self.seedFirebaseDB(userID: userID)
-//                }
                 
             } else {
                 print("error getting Firebase UserID")
@@ -207,47 +153,26 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
 
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in, do work such as go to next view controller.
-
-            // Each time loginVC loads, if logged into FB and Firebase db exists, perform sync
             
             if let userID = FIRAuth.auth()?.currentUser?.uid {
-            
-                ref.child(userID).observe(.value, with: { snapshot in
-                    let loginRef = snapshot.value as? NSDictionary
-//                    loginRef?.forEach { print("\($0): \($1)") }
-                    let firebaseTime = loginRef?["Time of Sync"]
+                
+                ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let refData = snapshot.value as? NSDictionary
+                    let firebaseTime = refData?["Time of Sync"]
                     
-
                     if firebaseTime != nil {
-                        print("firebaseTime in VDL is:  ", firebaseTime)
+                        print("firebaseTime in loginButton is:  ", firebaseTime ?? 43)
+
                         // Firebase entry for user exists -> sync data
-                        self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: loginRef)
+                        print("*** Found child from observeSingleEvent")
+                        self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: refData)
                     } else {
                         // Firebase entry for user NOT found -> see Firebase DB
                         print("No user found in Firebase, will call seedFirebaseDB")
                         self.seedFirebaseDB(userID: userID)
                     }
-                    
                 })
                 
-//                ref.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
-//                    let refData = snapshot.value as? NSDictionary
-//                    let firebaseTime = refData?["Time of Sync"]
-//                    
-//                    if firebaseTime != nil {
-//                        print("firebaseTime in loginButton is:  ", firebaseTime)
-//
-//                        // Firebase entry for user exists -> sync data
-//                        _ = snapshot.value  // was refResult
-//                        print("*** Found child from observeSingleEvent")
-//                        self.syncDataWithFirebase(userID: userID, firebaseTime: firebaseTime as! Int, refData: refData)
-//                    } else {
-//                        // Firebase entry for user NOT found -> see Firebase DB
-//                        print("No user found in Firebase, will call seedFirebaseDB")
-//                        self.seedFirebaseDB(userID: userID)
-//                    }
-//                    
-//                })
             } else {
                 print("error getting Firebase UserID")
             }
@@ -429,11 +354,11 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         let paintNumberArray: [Int] = getArrayOfPaintsFromCDS()
 
         // get time from Firebase and time from UserDefaults and then compare
-        let timeSinceEpoch = Int(Date().timeIntervalSince1970)
 
         // user default guard statements
         guard UserDefaults.standard.value(forKey: "timeOfLastSync") as? Int != nil else {
-            UserDefaults.standard.set(108, forKey: "timeOfLastSync")
+            let timeSinceEpoch = Int(Date().timeIntervalSince1970)
+            UserDefaults.standard.set(timeSinceEpoch, forKey: "timeOfLastSync")
             print("Guard statement setting timeSinceEpoch called")
             return
         }

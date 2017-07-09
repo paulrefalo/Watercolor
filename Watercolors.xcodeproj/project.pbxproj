@@ -81,7 +81,7 @@
 		486871191F0954060001747A /* PaintListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaintListTableViewController.swift; path = ViewControllers/PaintListTableViewController.swift; sourceTree = "<group>"; };
 		489D060A1EE3239400ED20B0 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		48A64C991F0B78D80004307F /* PaintItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaintItem.swift; path = Watercolors/PaintItem.swift; sourceTree = "<group>"; };
-		48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicator.swift; path = Watercolors/ActivityIndicator.swift; sourceTree = "<group>"; };
 		6B951EB84E28E25CA86D4348 /* Pods-Watercolors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watercolors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Watercolors/Pods-Watercolors.debug.xcconfig"; sourceTree = "<group>"; };
 		70D10C59D56D44B8FDCFFE70 /* Pods-WatercolorsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsUITests/Pods-WatercolorsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		88BE69C0CEA67BE3BD2DE705 /* Pods-WatercolorsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatercolorsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatercolorsTests/Pods-WatercolorsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +203,7 @@
 		486871161F06F6730001747A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */,
 				4805C7761E942CBE00C885F4 /* Assets.xcassets */,
 				48A64C991F0B78D80004307F /* PaintItem.swift */,
 				482E22111EFF3F9700D7CEEA /* Emitter.swift */,
@@ -221,7 +222,6 @@
 				F00B69A01E9C41FE0021F055 /* PaintInfoTVC.swift */,
 				486871191F0954060001747A /* PaintListTableViewController.swift */,
 				F00B699B1E9C41930021F055 /* SearchPigmentTCV.swift */,
-				48A64C9B1F11A4D20004307F /* ActivityIndicator.swift */,
 				F00B69A21E9C42210021F055 /* PigmentInfoTVC.swift */,
 				F00B69A61E9C43060021F055 /* TableViewCells */,
 			);
