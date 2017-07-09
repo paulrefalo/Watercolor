@@ -7,6 +7,9 @@ will be store both in core data and in backed up in Firebase.
 
 This app also serves as an excellent reference for each paint and pigment.
 
+![Alt text](/relative/path/to/img.jpg?raw=true "Login")
+
+
 ## Getting Started
 
 Install the app on an iOS device
