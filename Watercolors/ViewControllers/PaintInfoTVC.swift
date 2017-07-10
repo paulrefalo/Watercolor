@@ -65,6 +65,7 @@ class PaintInfoTVC: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         self.title = String(currentPaint.paint_number)
 

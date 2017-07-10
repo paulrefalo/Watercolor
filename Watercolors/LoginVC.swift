@@ -305,7 +305,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         let time = UserDefaults.standard.value(forKey: "timeOfLastSync")
 
         if time != nil {
-            let date = NSDate(timeIntervalSince1970: time as! TimeInterval)
+            let date = NSDate(timeIntervalSince1970: time as! TimeInterval) // app crashes if logged in??
             let dayTimePeriodFormatter = DateFormatter()
             dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
 
@@ -367,8 +367,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
         
         let CDStime = UserDefaults.standard.value(forKey: "timeOfLastSync") as! Int
 
-        // FOR TESTING use CDStime = 1399291339 for pre and CDStime = 1599291339 for post
-        // CDStime = 1399291339
+        
         print("CDStime is:  ", CDStime)
         print("firebaseTime is:  ", firebaseTime)
 
@@ -389,8 +388,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
                 UserDefaults.standard.value(forKey: "initialSyncWithFirebase") as! Bool == true {
                 UserDefaults.standard.set(false, forKey: "initialSyncWithFirebase")
             }
-
-            // refData?.forEach { print("\($0): \($1)") }
 
             for (key, value) in (refData)! {
                 let paintNumberString = key as! String

@@ -51,12 +51,10 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         managedContext = appDelegate.coreDataStack.managedContext
         self.initializeFetchedResultsController()
         searchBar.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchPigmentTCV.dismissKeyboard))
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+        view.addGestureRecognizer(tap)
     }
 
     // MARK: - Table view data source
@@ -93,6 +91,10 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     // MARK: - Navigation

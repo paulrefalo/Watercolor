@@ -38,7 +38,7 @@
 "LoginButton.LogIn" = "Log in";
 
 /* The long label for the FBSDKLoginButton when the user is currently logged out */
-"LoginButton.LogInContinue" = "Continue with Facebook";
+"LoginButton.LogInContinue" = "Login with Facebook";
 
 /* The long label for the FBSDKLoginButton when the user is currently logged out */
 "LoginButton.LogInLong" = "Log in with Facebook";
