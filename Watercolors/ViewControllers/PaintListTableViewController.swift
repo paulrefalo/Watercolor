@@ -35,9 +35,8 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         self.initializeFetchedResultsController()
         searchBar.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchPigmentTCV.dismissKeyboard))
+        searchBar.returnKeyType = UIReturnKeyType.done
         
-        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,8 +99,8 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
         return 90.0
     }
 
-    func dismissKeyboard() {
-        view.endEditing(true)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+        searchBar.resignFirstResponder()
     }
 
     // MARK: - Navigation
@@ -161,7 +160,8 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     // MARK: - Actions
 
     @IBAction func displayLoginVCmodally(_ sender: UIBarButtonItem) {
-        dismiss(animated:true,completion:nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.present(vc, animated: true, completion: nil)
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {

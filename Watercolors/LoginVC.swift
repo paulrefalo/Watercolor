@@ -298,24 +298,19 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate, NSFetchedResultsContr
     }
 
     func getDateFormatString() -> String {
-        if UserDefaults.standard.value(forKey: "timeOfLastSync") == nil {
-            UserDefaults.standard.set("", forKey: "timeOfLastSync")
-        }
         
-        let time = UserDefaults.standard.value(forKey: "timeOfLastSync")
-
-        if time != nil {
-            let date = NSDate(timeIntervalSince1970: time as! TimeInterval) // app crashes if logged in??
+        if let time = UserDefaults.standard.value(forKey: "timeOfLastSync") as? TimeInterval {
+            
+            let date = NSDate(timeIntervalSince1970: time) // app crashes if logged in??
             let dayTimePeriodFormatter = DateFormatter()
             dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
-
+            
             let dateString = dayTimePeriodFormatter.string(from: date as Date)
-
+            
             return dateString
-        } else  {
-            return ""
-
         }
+        
+        return ""
     }
 
     func getArrayOfPaintsFromCDS() -> Array<Int> {

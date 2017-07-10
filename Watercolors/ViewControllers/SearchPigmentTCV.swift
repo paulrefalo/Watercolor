@@ -51,10 +51,8 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         managedContext = appDelegate.coreDataStack.managedContext
         self.initializeFetchedResultsController()
         searchBar.delegate = self
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchPigmentTCV.dismissKeyboard))
 
-        view.addGestureRecognizer(tap)
+        searchBar.returnKeyType = UIReturnKeyType.done
     }
 
     // MARK: - Table view data source
@@ -93,8 +91,8 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         return 80.0
     }
     
-    func dismissKeyboard() {
-        view.endEditing(true)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+        searchBar.resignFirstResponder()
     }
 
     // MARK: - Navigation
@@ -123,7 +121,8 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
     // MARK: - Actions
 
     @IBAction func displayLoginVCModally(_ sender: Any) {
-        dismiss(animated:true,completion:nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.present(vc, animated: true, completion: nil)
     }
 
     //Search Functionality
