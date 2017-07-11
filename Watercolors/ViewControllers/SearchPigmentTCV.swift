@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FBSDKLoginKit
 
 class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
 
@@ -17,6 +18,7 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
     var fetchedResultsController : NSFetchedResultsController<Pigment>!
     var searchPredicate: NSCompoundPredicate?
     var resultSearchController:UISearchController?
+    let loginManager = FBSDKLoginManager()
 
     // MARK: - IBOutlets
 
@@ -53,6 +55,17 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
         searchBar.delegate = self
 
         searchBar.returnKeyType = UIReturnKeyType.done
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        
+        if (FBSDKAccessToken.current() != nil) {
+            settingsButton.title = "Logout"
+        } else {
+            settingsButton.title = "Login"
+        }
     }
 
     // MARK: - Table view data source
@@ -121,8 +134,14 @@ class SearchPigmentTCV: UITableViewController, NSFetchedResultsControllerDelegat
     // MARK: - Actions
 
     @IBAction func displayLoginVCModally(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        self.present(vc, animated: true, completion: nil)
+        if (FBSDKAccessToken.current() != nil) {
+            loginManager.logOut() // this is an instance function
+            print("******* logOut of Facebook from gear button")
+            settingsButton.title = "Login"
+        } else {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            self.present(vc, animated: true, completion: nil)
+        }
     }
 
     //Search Functionality

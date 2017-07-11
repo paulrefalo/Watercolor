@@ -364,7 +364,7 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Pigments" id="G7p-UD-UrN">
-                        <barButtonItem key="rightBarButtonItem" image="gear" id="QzX-FT-Uok">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="QzX-FT-Uok">
                             <connections>
                                 <action selector="displayLoginVCModally:" destination="JOz-Jr-hGG" id="vJg-oQ-KZY"/>
                             </connections>
@@ -805,7 +805,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Watercolors" id="t8T-qM-5WP">
-                        <barButtonItem key="rightBarButtonItem" image="gear" id="JWg-Mc-3Kj">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="JWg-Mc-3Kj">
                             <connections>
                                 <action selector="displayLoginVCmodally:" destination="YrS-NL-QDJ" id="X9h-qy-e1v"/>
                             </connections>
@@ -819,7 +819,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZN-Ae-u3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-582" y="-25"/>
+            <point key="canvasLocation" x="-619" y="-25"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="NSZ-yo-TsN">
@@ -955,7 +955,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVU-Sf-enQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1205.5" y="836.5"/>
+            <point key="canvasLocation" x="-1254" y="837"/>
         </scene>
     </scenes>
     <resources>
@@ -967,7 +967,6 @@
         <image name="PV14-CobaltViolet" width="300" height="100"/>
         <image name="Tab-Paint" width="25" height="25"/>
         <image name="Tab-Pigment" width="25" height="25"/>
-        <image name="gear" width="26" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

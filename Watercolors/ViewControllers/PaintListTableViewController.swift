@@ -20,6 +20,7 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     var searchPredicate: NSCompoundPredicate?
     var inventoryPredicate: NSPredicate?
     let ref = FIRDatabase.database().reference(withPath: "Watercolors")
+    let loginManager = FBSDKLoginManager()
 
     // MARK: - IBOutlets
 
@@ -42,6 +43,12 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
+        if (FBSDKAccessToken.current() != nil) {
+            settingsButton.title = "Logout"
+        } else {
+            settingsButton.title = "Login"
+        }
     }
 
     // MARK: - Table view data source
@@ -158,10 +165,16 @@ class PaintListTableViewController: UITableViewController, NSFetchedResultsContr
     }
 
     // MARK: - Actions
-
+    
     @IBAction func displayLoginVCmodally(_ sender: UIBarButtonItem) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        self.present(vc, animated: true, completion: nil)
+        if (FBSDKAccessToken.current() != nil) {
+            loginManager.logOut() // this is an instance function
+            print("******* logOut of Facebook from gear button")
+            settingsButton.title = "Login"
+        } else {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            self.present(vc, animated: true, completion: nil)
+        }
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
